@@ -19,6 +19,7 @@ resources:
   - res-ctf-wiki-heap-overview
 challenges:
   - ch-nightmare-protostar-heap2
+  - ch-nightmare-0ctf17-babyheap
 hints: []
 writeups: []
 review:

@@ -19,6 +19,10 @@
 | how2heap 单题 | 题目 | — | 仓库已作为 `res-how2heap` 收录。它不是一道 challenge，id `ch-how2heap-lab` 只作 planned 说明 |
 | CTF Wiki ARM 栈深链 `.../stackoverflow/arm/stack-intro/` | 结构 | ❌ 404 | 2026-09-27。不把 ARM 栈章节当成已打开 |
 | CTF Wiki 内核深链 `.../kernel-mode/environment/` | 结构 | ❌ 404 | 2026-09-27。首页导航有 Kernel Mode 字样，章节页未核对 |
+| sourceware.org glibc Release / MallocInternals | 版本公告 | ❌ 访问被拦截 | 2026-09-27 打开得到 Anubis Access Denied。2.34 hook 移除不能用该站补证 |
+| how2heap README 外链 acez.re（HITCON 2014 stkof） | writeup | ⚠️ 未打开 | 只看到 README 里的链接文字。正式 writeup 用 Nightmare 深页 |
+| abi-aa `pauthabielf64.rst` | PAC | ⚠️ 只见索引链接 | 2026-09-27 未打开正文。不建资源 |
+| AArch64 利用教程与题目 | 路线 | ⚠️ Research Needed | 本轮没有打开。AAPCS64 只覆盖调用约定 |
 | ir0nstone.github.io 旧域名 | 结构 | ❌ 404 | 已迁移至 GitBook（新址已验证） |
 | HeapLAB（Udemy 付费课） | 课程 | ⚠️ 未验证 | ROP Emporium 站内推广；付费内容不在本项目验证范围 |
 | 各 B 站 pwn 教学视频 | 视频 | ⚠️ 未验证 | 视频验证成本高，标准待定（ROADMAP-RESEARCH §8） |

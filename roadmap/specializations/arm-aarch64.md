@@ -1,35 +1,51 @@
-# ARM / AArch64 学习路线
+# ARM32 与 AArch64
 
-> track: specialization ｜ 依赖：PWN Core（利用方法论可迁移）
+> track: specialization ｜ 依赖：PWN Core 的利用方法可以迁移，寄存器和调用约定不能混用。
+> 本文件不再把 ARM32 和 AArch64 写在同一条 8 级阶梯里。
 
-## 学习阶梯
+## ARM32（已有核对过的入口）
+
+Azeria《Writing ARM Assembly》Part 1 写明教程重点是 32 位，示例在 ARMv6（Raspberry Pi 1）。系列后面是寄存器、指令、内存访问、条件与分支、栈与函数。ROP Emporium 的 ret2win 页提供 `ret2win_armv5.zip`（`ch-ropemporium-ret2win`）。这是 ARMv5，不是 AArch64。
 
 ```text
-1. ARM 架构基础     — RISC 与 x86 对照、ARM/Thumb 模式、条件执行
-2. 寄存器与栈       — r0-r7/r13(sp)/r14(lr)/r15(pc)；AArch64 x0-x30
-3. 指令集           — ldr/str 多寄存器、ldm/stm、跳转与链接
-4. 调用约定         — r0-r3(x0-x7) 传参；返回地址在 lr 而非栈上！
-5. ELF on ARM       — 与 x86 ELF 的差异（interpret/属性节）
-6. 调试             — qemu-arm + gdb-multiarch；pwndbg/gef 支持 ARM
-7. ROP on ARM       — gadget 形态差异（pc 在寄存器）、ret2csu 变体
-8. 实战             — ROP Emporium ARMv5 关卡、ARM CTF 题
+ARM32
+  寄存器与 ARM/Thumb     — Azeria Part 1 已打开
+  栈与函数               — Azeria 系列后部；本轮只打开了 Part 1
+  调用约定               — 返回地址在 lr；溢出常覆盖栈上保存的 lr
+  利用                   — 只核对了 ROP Emporium 的 ARMv5 包，没有新的 ARM32 CTF 题
 ```
 
-## 已核对与未核对（2026-09-27）
+Thumb 的地址奇偶性只属于 ARM32 / Thumb，不要写到 AArch64 上。
 
-- **ARM32：** Azeria Part 1 写明教程重点是 32 位，示例在 ARMv6。ROP Emporium 的 ret2win 页提供 `ret2win_armv5.zip`（见 `ch-ropemporium-ret2win`）。这两处是本方向目前唯一核对过的练习入口。
-- **AArch64：** 上面的阶梯后半把 AArch64 寄存器和 PAC 写在同一张表里，是迁移提示，不是已核对的课程。本轮没有打开一份系统的 AArch64 利用教程，所以不新建 `spec-aarch64-*` 知识点，也不收新资源。
-- **CTF Wiki 的 ARM 栈页：** 尝试打开 `.../stackoverflow/arm/stack-intro/` 得到 404。不要把那条深链当成已验证资料。
+## AArch64（本轮只核对了调用约定）
 
-## 已验证入口资源
+2026-09-27 打开了 Arm 的 AAPCS64：`res-aapcs64`。标题是 Procedure Call Standard for the Arm 64-bit Architecture (AArch64)。章节包括通用寄存器、栈、参数传递。
 
-- **Azeria Labs《Writing ARM Assembly》7 部系列**（英文，含后续 ARM exploit 开发系列）——S35
-- **ROP Emporium**（每关提供 ARMv5 版本，ret2win 起点即有）——S8
-- **CTF Wiki**（栈溢出 arm/mips/risc-v 变体章节）——S1
+没有打开 AArch64 的利用教程，也没有 AArch64 题目。因此：
 
-## 与 x86 学习的关键差异（迁移要点）
+- 不新建 `spec-aarch64-*` 知识点
+- 不把 Azeria 或 ROP Emporium ARMv5 写成 AArch64 练习
+- 不新增 `architecture: AArch64` 的 challenge。现有 ret2win 的 ARM 包是 ARMv5
 
-- 返回地址在 `lr`（link register），溢出覆盖的常是栈上保存的 lr
-- 无 x86 式 `ret` 万能 gadget，pivot/gadget 形态不同
-- Thumb 模式（地址奇偶性）是 ARM 特有细节
-- 现实场景多为 ARM64（AArch64）：寄存器 x 系列、SP 独立、PAC（指针验证）等新缓解
+```text
+AArch64
+  寄存器与调用约定   — 已核对：AAPCS64
+  指令与 ELF         — 未核对
+  ROP / ret2libc     — 未核对，Research Needed
+  PAC / BTI          — 见下，不放进入门
+```
+
+## PAC / BTI
+
+二者都是控制流保护，放在传统 ROP（改返回地址或函数指针）之后，不是 AArch64 入门。
+
+abi-aa 索引页上有一份单独链接：PAuth ABI Extension to ELF（`pauthabielf64/pauthabielf64.rst`）。本轮只看见链接，没有打开正文，所以不建知识点、不建资源条目。同一索引页没有单独的 BTI 文档链接。BTI 保持 Research Needed。
+
+## 仍然 404
+
+CTF Wiki `.../stackoverflow/arm/stack-intro/` 在 2026-09-27 返回 404。不要引用那条深链。
+
+## 与 x86 的差别（只保留 ARM32 上已能从 Azeria / ROP Emporium 对上的部分）
+
+- ARM32：返回地址在 `lr`，gadget 不是 x86 的 `ret`
+- AArch64 的寄存器宽度、SP 和调用约定以 AAPCS64 为准，不要从 ARM32 表推过去

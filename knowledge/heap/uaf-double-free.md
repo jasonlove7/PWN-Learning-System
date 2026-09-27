@@ -17,7 +17,8 @@ objectives:
 resources:
   - res-how2heap
   - res-nightmare
-challenges: []
+challenges:
+  - ch-nightmare-plaid19-cpp
 planned_challenges:
   - id: ch-pwnable-kr-uaf
     name: uaf
@@ -40,7 +41,6 @@ version_dependent: true
 verified_versions:
   - glibc: "> 2.25"
     notes: how2heap README 把 house_of_botcake.c 写成绕过 tcache 上的 double free 限制，版本格 > 2.25。UAF 作为漏洞类本身不绑定单一版本。
-practice_status: no_verified_challenge
 ---
 
 # UAF 与 double free

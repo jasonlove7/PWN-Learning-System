@@ -18,7 +18,8 @@ objectives:
 resources:
   - res-how2heap
   - res-ctf-wiki-heap-overview
-challenges: []
+challenges:
+  - ch-nightmare-plaid19-cpp
 planned_challenges:
   - id: ch-how2heap-lab
     name: how2heap lab
@@ -42,7 +43,6 @@ verified_versions:
     notes: how2heap README 把 tcache_poisoning.c 标成 > 2.25，并写 2.32 及之后需要 heap leak。
   - glibc: ">= 2.32"
     notes: how2heap README 把 decrypt_safe_linking.c 标成 >= 2.32。仓库有 glibc_2.32/ 目录，其中有该文件；glibc_2.31/ 的文件列表里没有它。
-practice_status: no_verified_challenge
 ---
 
 # tcache 与 safe-linking

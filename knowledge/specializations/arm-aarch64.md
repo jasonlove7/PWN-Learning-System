@@ -17,6 +17,7 @@ resources:
   - res-azeria-arm
   - res-ropemporium
   - res-ctf-wiki
+  - res-aapcs64
 challenges:
   - ch-ropemporium-ret2win
 # ARMv5 不是独立题目。2026-09-27 打开 ret2win 页，下载项含 ret2win_armv5.zip。

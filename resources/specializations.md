@@ -122,6 +122,24 @@ why_useful: Browser 方向已验证入口
 related_knowledge: [spec-browser]
 maintenance_status: active
 ---
+id: res-aapcs64
+title: Procedure Call Standard for the Arm 64-bit Architecture (AArch64)
+author: Arm
+source: https://github.com/ARM-software/abi-aa/blob/main/aapcs64/aapcs64.rst
+url: https://github.com/ARM-software/abi-aa/blob/main/aapcs64/aapcs64.rst
+source_type: official-docs
+language: en
+tier: ADVANCED
+verified: true
+verified_date: 2026-09-27
+verification_method: 打开 ARM-software/abi-aa 中的 aapcs64.rst。标题写明 AArch64。可见章节含 Machine Registers、General-purpose Registers、The Stack、Parameter passing。这是调用约定，不是利用教程。
+license: 仓库内许可文件本轮未逐份打开，写 unknown
+summary: AArch64 的官方过程调用标准：64 位寄存器、栈、参数如何传递。不能拿来代替 ARM32 的 Azeria 教程，也没有 ROP 内容。
+why_useful: 把 AArch64 调用约定和 ARM32 分开的第一份官方文本
+related_knowledge: [spec-arm-aarch64]
+maintenance_status: active
+notes: PAC 在同一索引里有单独文档 pauthabielf64.rst，本轮只确认链接存在，没有打开正文，故不另建资源。BTI 在该索引页没有单独文档链接。
+---
 id: res-azeria-arm
 title: Azeria Labs — Writing ARM Assembly (Part 1~7)
 author: Azeria Labs

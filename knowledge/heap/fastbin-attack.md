@@ -17,7 +17,8 @@ objectives:
 resources:
   - res-how2heap
   - res-nightmare
-challenges: []
+challenges:
+  - ch-nightmare-0ctf17-babyheap
 planned_challenges: []
 # 0CTF 2016 zerostorage 曾被记成 fastbin 例题（旧 id ch-nightmare-0ctf16-zer0storage）。
 # 2026-09-27 打开 Nightmare 深页后，它在 unsorted bin 模块，正式条目是
@@ -37,7 +38,6 @@ verified_versions:
     notes: how2heap README 的 fastbin_dup.c 版本格是 < 2.43。
   - glibc: "2.26 - 2.42"
     notes: how2heap README 的 fastbin_reverse_into_tcache.c 版本格是 2.26 - 2.42。
-practice_status: no_verified_challenge
 ---
 
 # fastbin attack

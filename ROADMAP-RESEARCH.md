@@ -334,6 +334,64 @@ Specializations（自选方向，非必修）
 
 ---
 
+## 11. Phase 3-B（2026-09-27）
+
+### 11.1 堆的版本：写进字段的，和故意不写的
+
+打开了 how2heap 的 `README.md` 与 `glibc_ChangeLog.md`（raw），并用 GitHub API 列出了版本目录。目录实有 `glibc_2.23`、`2.24`、`2.27`、`2.31`–`2.43`，另有 `obsolete/`。**没有 `glibc_2.26` 目录。** changelog 却写：2.26 引入 tcache（per-thread cache），Ubuntu 构建从 2.27 起启用；同一节还写了 unlink 的 size 与 prev_size 检查。
+
+README 版本格（原文，不是推出来的）：
+
+| 示例 | README 版本格 |
+|------|----------------|
+| tcache_poisoning.c | > 2.25，并注明 2.32 及之后需要 heap leak |
+| decrypt_safe_linking.c / safe_link_double_protect.c | >= 2.32 |
+| large_bin_attack.c | < 2.42 |
+| fastbin_dup.c | < 2.43 |
+| fastbin_reverse_into_tcache.c | 2.26 - 2.42 |
+| unsafe_unlink.c | latest |
+| house_of_io.c | 2.31 - 2.33 |
+| overlapping_chunks.c（unsorted size） | < 2.29 |
+| house_of_botcake.c | > 2.25 |
+
+`glibc_2.32/` 有 `decrypt_safe_linking.c`，`glibc_2.31/` 的文件名列表里没有。`glibc_2.34/` 的文件名列表里没有 `house_of_io.c`，也没有带 `malloc_hook` / `free_hook` 的文件名。README 全文没有 `malloc_hook` 或 `free_hook`。changelog 停在 2.27。
+
+因此：**2.29 的 tcache key、2.34 移除 hook，本轮不写入 `verified_versions`。** 旧知识点正文里的这些句子已改成「未在本轮文本中核对」。sourceware.org 的发布说明页被拦截，没有打开，不能补这条。
+
+how2heap 仍只作为 `res-how2heap`。不进入 `challenges/`。
+
+### 11.2 新题（都打开了 Nightmare 深页）
+
+| 题 | 页上的事实 | 挂到 |
+|----|------------|------|
+| PlaidCTF 2019 cpp | 标题 plaidctf 2019 cpp；UAF 与 double free；打印 Ubuntu GLIBC 2.27 | adv-uaf-double-free、adv-tcache |
+| HITCON 2014 stkof | 标题 Hitcon 2014 stkof；unsafe unlink | adv-unsafe-unlink |
+| 0CTF 2017 babyheap | 章节 0ctf babyheap；菜单文字 Baby Heap in 2017；堆溢出后走到 fastbin | adv-fastbin-attack、adv-heap-overflow |
+| Hack.lu 2014 Oreo | 标题 Hack.lu 2014 Oreo；标签 House of Spirit | adv-house-of |
+
+拒绝收录：
+
+- Nightmare `tcache_explanation`：页内写 “This isn't a ctf challenge.”
+- `uaf_explanation`：讲解页，没有赛事名。
+- how2heap 的每个 `.c`：示例，不是题。
+- CSAW 2019 popping caps：打开过 popping caps 0，但它是 tcache 元数据题，且本阶段已有 4 道，不再加。
+- ZCTF 2016 note2、CSAW 2017 auir：打开过，同理停在 4 道上限内，没有建文件。
+- how2heap README 指向的 acez.re stkof 外链：没有打开，不收为第二条 writeup。
+
+### 11.3 ARM32 / AArch64
+
+Azeria Part 1 与 ROP Emporium `ret2win_armv5.zip` 只支持 ARM32 / ARMv5。本轮打开 AAPCS64（`aapcs64.rst`），标题写明 AArch64，章节含寄存器、栈、参数传递，收为 `res-aapcs64`。没有 AArch64 利用教程，没有 AArch64 题，没有新知识点文件。
+
+abi-aa 索引上能看到 PAuth ABI（`pauthabielf64.rst`）的链接，正文没打开，不建资源。索引上没有单独的 BTI 文档链接。PAC/BTI 保持在入门之后，状态是 Research Needed。
+
+### 11.4 路线
+
+堆的教学顺序不改。补的是版本字段和实践题，不是新的一层。ARM 路线从「一张混合阶梯」改成 ARM32 与 AArch64 两节。
+
+*本节 URL 均在 2026-09-27 打开，或如 sourceware 发布页那样明确失败。*
+
+---
+
 ## 9. 验证方法复现
 
 

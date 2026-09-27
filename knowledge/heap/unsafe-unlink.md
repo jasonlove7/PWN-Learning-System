@@ -19,7 +19,8 @@ resources:
   - res-how2heap
   - res-nightmare
   - res-sploitfun-malloc
-challenges: []
+challenges:
+  - ch-nightmare-hitcon14-stkof
 planned_challenges:
   - id: ch-pwnable-kr-unlink
     name: unlink
@@ -47,7 +48,6 @@ verified_versions:
     notes: how2heap README 把 unsafe_unlink.c 的版本格写成 latest，示例链到 glibc_2.35/unsafe_unlink.c。glibc_2.23 目录里也有同名文件。这不是「每个历史版本字节级相同」。
   - glibc: "2.26"
     notes: how2heap glibc_ChangeLog.md 在 2.26 记下 unlink 增加了 chunk size 与 next->prev_size 的一致性检查。
-practice_status: no_verified_challenge
 ---
 
 # unsafe unlink

@@ -19,7 +19,8 @@ resources:
   - res-how2heap
   - res-ctf-wiki-heap-overview
   - res-nightmare
-challenges: []
+challenges:
+  - ch-nightmare-hacklu14-oreo
 # hitcon magicheap 在 Nightmare 的 unsorted bin 模块，不是 house 例题。
 # 正式条目 ch-nightmare-hitcon-magicheap 挂在 adv-unsorted-bin-attack。
 hints: []
@@ -37,7 +38,6 @@ verified_versions:
     notes: how2heap README 将 house_of_lore、house_of_einherjar、house_of_spirit 等标成 latest。house_of_force 的 top size 检查版本本轮没有在 changelog 里看到，不写入。
   - glibc: "2.31 - 2.33"
     notes: how2heap README 把 house_of_io.c 标成 2.31 - 2.33。
-practice_status: no_verified_challenge
 ---
 
 # house of 系列总览

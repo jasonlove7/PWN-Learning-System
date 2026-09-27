@@ -49,6 +49,7 @@
 | 42 | res-liveoverflow | https://www.youtube.com/@LiveOverflow | 同意墙拦截（部分验证） | ⚠️ verified:false |
 | 43 | res-kernel-memory-allocation | https://docs.kernel.org/core-api/memory-allocation.html | 7.3.0-rc4 / Memory Allocation Guide / GFP | ✅ |
 | 44 | res-windows-driver-getting-started | https://learn.microsoft.com/en-us/windows-hardware/drivers/gettingstarted/ | 驱动入门，非漏洞教程 | ✅ |
+| 45 | res-aapcs64 | https://github.com/ARM-software/abi-aa/blob/main/aapcs64/aapcs64.rst | AArch64 调用约定；寄存器/栈/参数 | ✅ |
 
 ## 说明
 
