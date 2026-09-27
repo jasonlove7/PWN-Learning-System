@@ -70,6 +70,27 @@ AI 生成的正文必须同时满足：
 
 带 NC（非商用）的材料，例如 RPISEC MBE，在条目里写明限制。
 
+若权利人来信，按 README 的联系方式核对路径和原始链接，再决定补署名、改引用、换链接或删除。不要回复「用于学习所以没问题」。
+
+## 堆的版本
+
+`version_dependent: true` 时，`verified_versions` 里每一条都要能指回打开过的原文（how2heap README 的版本格、glibc_ChangeLog、或某道题页面上印出的库版本）。
+
+没有原文的版本不要写。特别是：不要把 2.29 的 tcache key、2.34 移除 hook 写成已核对，除非以后打开了写出这两句的页面。
+
+`practice_status: no_verified_challenge` 只在没有正式题时使用。有题就删掉这个字段。
+
+## 架构
+
+Linux、Windows、Android 是平台，不是 CPU。
+
+`architecture_scope` 只使用 `ARM32`、`AArch64`、`x86`、`x86_64`。页面没写就不要填。不要把 ARMv5 写成 AArch64，也不要因为「手机通常是 ARM」就给 Android 题填 AArch64。
+
+## 避免幻觉
+
+搜索摘要、模型记忆、侧栏上没打开的链接，都不是验证。打不开就记在 `research/unverified/`，不要改进正式推荐。
+
+
 ## Privacy
 
 不得提交：

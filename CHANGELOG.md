@@ -25,4 +25,7 @@
 - 对本轮实际打开过的 Nightmare 深页，补了少量正式题和外部 writeup 元数据
 - 尚未建文件的题改记在 `planned_challenges`，不冒充已收录
 
-未做：没有添加 git remote，没有 push，没有选定 LICENSE。
+未做：没有选定 LICENSE。
+
+同日后续提交把堆的版本字段、已打开的 Nightmare 深页、以及 Linux / Windows / Android / AArch64 的官方入口写进了仓库。CTF² 首页能打开，题目在登录后，没有收录。v1.0 把 README 改成现状说明，没有再加题。
+
