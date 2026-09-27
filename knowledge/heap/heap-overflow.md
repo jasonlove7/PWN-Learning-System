@@ -17,7 +17,8 @@ objectives:
 resources:
   - res-how2heap
   - res-ctf-wiki-heap-overview
-challenges: []
+challenges:
+  - ch-nightmare-protostar-heap2
 hints: []
 writeups: []
 review:

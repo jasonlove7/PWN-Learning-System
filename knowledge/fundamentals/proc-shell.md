@@ -16,8 +16,18 @@ objectives:
   - 知道 /proc/self/ 下 maps|cmdline|fd|environ 各自的利用价值
 resources: []
 challenges:
-  - ch-pwnable-kr-cmd1
-  - ch-pwnable-kr-cmd2
+  - ch-pwnable-kr-blukat
+planned_challenges:
+  - id: ch-pwnable-kr-cmd1
+    name: cmd1
+    platform: pwnable.kr
+    status: research-needed
+    note: Toddler's Bottle 名单曾在 2026-09-27 的 play.php 核对中出现；本次审计未能再次读取该页，故不建正式条目。
+  - id: ch-pwnable-kr-cmd2
+    name: cmd2
+    platform: pwnable.kr
+    status: research-needed
+    note: 同上。
 hints: []
 writeups: []
 review:

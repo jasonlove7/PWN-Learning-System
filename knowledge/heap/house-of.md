@@ -19,8 +19,9 @@ resources:
   - res-how2heap
   - res-ctf-wiki-heap-overview
   - res-nightmare
-challenges:
-  - ch-nightmare-hitcon-magicheap
+challenges: []
+# hitcon magicheap 在 Nightmare 的 unsorted bin 模块，不是 house 例题。
+# 正式条目 ch-nightmare-hitcon-magicheap 挂在 adv-unsorted-bin-attack。
 hints: []
 writeups: []
 review:

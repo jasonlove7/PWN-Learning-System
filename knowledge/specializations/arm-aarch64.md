@@ -18,7 +18,9 @@ resources:
   - res-ropemporium
   - res-ctf-wiki
 challenges:
-  - ch-ropemporium-ret2win-arm
+  - ch-ropemporium-ret2win
+# ARMv5 不是独立题目。2026-09-27 打开 ret2win 页，下载项含 ret2win_armv5.zip。
+# 旧 id ch-ropemporium-ret2win-arm 已废弃，做同题的 ARMv5 二进制即可。
 hints: []
 writeups: []
 review:

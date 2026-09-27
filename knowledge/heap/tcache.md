@@ -18,8 +18,13 @@ objectives:
 resources:
   - res-how2heap
   - res-ctf-wiki-heap-overview
-challenges:
-  - ch-how2heap-lab
+challenges: []
+planned_challenges:
+  - id: ch-how2heap-lab
+    name: how2heap lab
+    platform: how2heap
+    status: planned
+    note: how2heap 是已验证的示例仓库（res-how2heap），不是单道题目。不伪造 challenge 条目。见 adv-heap-modern 的同一说明。
 hints: []
 writeups: []
 review:

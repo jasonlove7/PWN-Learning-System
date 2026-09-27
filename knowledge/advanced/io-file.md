@@ -21,7 +21,7 @@ resources:
   - res-how2heap
   - res-nightmare
 challenges:
-  - ch-nightmare-swampctf19-badfile
+  - ch-nightmare-swamp19-badfile
 hints: []
 writeups: []
 review:

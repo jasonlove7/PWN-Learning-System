@@ -9,18 +9,21 @@ difficulty: basic
 url: https://guyinatuxedo.github.io/
 knowledge_points:
   - core-ret2libc
-  - core-stack-pivot
 prerequisites:
   - ch-nightmare-csaw19-babyboi
 why_selected: |
-  Pilot ②：极小缓冲的 ret2libc 变体——考验"溢出窗口受限时怎么办"。
+  Pilot 队列中的 ret2libc 变体。深页本轮没有找到，技术细节不要从文件名推断。
+  已去掉 core-stack-pivot：没有打开的页面证明这道题在练栈迁移。
 verification_status: platform-verified-challenge-listed
 writeup:
-  external:
-    - wu-nightmare-index
+  external: []
   ai_summary: ""
 reproducibility: medium
-notes_on_source: Nightmare §5 收录并配 writeup
+notes_on_source: |
+  2026-09-27 首页索引有未加链接的 utc19_shellme 字样，归在动态 ROP 列表。
+  猜测的深页 URL（08-bof_dynamic 与 11-stack_pivoting）均为 404。
+  因此不挂 wu-nightmare-* writeup，URL 保持站点根，状态维持 listed 而不是 deep-page verified。
+  原赛事归档 URL 未验证。
 ---
 
 # shellme（UTC CTF 2019）—— Pilot ②

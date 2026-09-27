@@ -9,17 +9,17 @@ difficulty: intermediate
 url: https://guyinatuxedo.github.io/
 knowledge_points:
   - core-fmt-string
-  - core-got-plt-leak
+  - core-leak-basics
 prerequisites:
   - ch-nightmare-backdoor17-bbpwn
 why_selected: Nightmare §6 进阶代表：泄漏+写的组合应用。
 verification_status: platform-verified-challenge-listed
 writeup:
-  external:
-    - wu-nightmare-index
+  external: []
   ai_summary: ""
 reproducibility: medium
-notes_on_source: Nightmare §6 收录并配 writeup
+notes_on_source: |
+  2026-09-27 侧栏可见深链 https://guyinatuxedo.github.io/10-fmt_strings/tw16_greeting/index.html ，本轮未打开该页正文，故不升为 deep-page verified，也不单列 writeup。
 ---
 
 # greeting（Tokyo Westerns CTF 2016）

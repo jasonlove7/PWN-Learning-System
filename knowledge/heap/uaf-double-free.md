@@ -17,9 +17,15 @@ objectives:
 resources:
   - res-how2heap
   - res-nightmare
-challenges:
-  - ch-pwnable-kr-uaf
-  - ch-nightmare-protostar-heap2
+challenges: []
+planned_challenges:
+  - id: ch-pwnable-kr-uaf
+    name: uaf
+    platform: pwnable.kr
+    status: research-needed
+    note: Toddler's Bottle 名单曾在 2026-09-27 的 play.php 核对中出现；本次未能再次读取该页，不建正式条目。
+# Protostar heap2 已建正式题 ch-nightmare-protostar-heap2，但是堆溢出，挂在 adv-heap-overflow。
+# 旧引用把它放在本 UAF 知识点下，2026-09-27 打开深页后已移走。
 hints: []
 writeups: []
 review:

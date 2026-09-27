@@ -21,6 +21,7 @@ resources:
   - res-nightmare
 challenges:
   - ch-nightmare-hitcon-magicheap
+  - ch-nightmare-0ctf16-zerostorage
 hints: []
 writeups: []
 review:

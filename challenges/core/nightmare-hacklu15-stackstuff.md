@@ -14,11 +14,11 @@ prerequisites:
 why_selected: Nightmare 专题 10.) Partial Overwrite 代表题。
 verification_status: platform-verified-challenge-listed
 writeup:
-  external:
-    - wu-nightmare-index
+  external: []
   ai_summary: ""
 reproducibility: medium
-notes_on_source: Nightmare "10.) Partial Overwrite" 收录并配 writeup
+notes_on_source: |
+  2026-09-27 侧栏可见深链 https://guyinatuxedo.github.io/15-partial_overwrite/hacklu15_stackstuff/index.html ，本轮未打开该页正文，故不升为 deep-page verified，也不单列 writeup。
 ---
 
 # stackstuff（Hack.lu CTF 2015）

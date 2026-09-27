@@ -19,6 +19,7 @@ resources:
   - res-man7-seccomp
 challenges:
   - ch-pwnable-kr-fd
+  - ch-pwnable-kr-blukat
 hints: []
 writeups: []
 review:

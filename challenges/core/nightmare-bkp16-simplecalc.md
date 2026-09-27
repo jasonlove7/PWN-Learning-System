@@ -14,11 +14,11 @@ prerequisites:
 why_selected: Nightmare §4 静态 ROP 代表题：长链构造与 syscall 出口综合训练。
 verification_status: platform-verified-challenge-listed
 writeup:
-  external:
-    - wu-nightmare-index
+  external: []
   ai_summary: ""
 reproducibility: medium
-notes_on_source: Nightmare §4 收录并配 writeup
+notes_on_source: |
+  2026-09-27 侧栏可见深链 https://guyinatuxedo.github.io/07-bof_static/bkp16_simplecalc/index.html ，本轮未打开该页正文，故不升为 deep-page verified，也不单列 writeup。
 ---
 
 # simplecalc（BKP CTF 2016）

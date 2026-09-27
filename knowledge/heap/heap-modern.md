@@ -20,8 +20,13 @@ objectives:
 resources:
   - res-how2heap
   - res-ctf-wiki-heap-overview
-challenges:
-  - ch-how2heap-lab
+challenges: []
+planned_challenges:
+  - id: ch-how2heap-lab
+    name: how2heap lab
+    platform: how2heap
+    status: planned
+    note: 资源 id 是 res-how2heap。仓库是按 glibc 版本组织的示例集，不是一道可收录的 challenge。
 hints: []
 writeups: []
 review:

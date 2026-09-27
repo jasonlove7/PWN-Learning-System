@@ -20,7 +20,8 @@ resources:
   - res-nightmare
 challenges:
   - ch-ropemporium-pivot
-  - ch-nightmare-inctf17-stupiddrop
+# InCTF 2017 的 Nightmare 深页是 SROP（stupidrop），不是 stack pivot。
+# 正式题为 ch-nightmare-inctf17-stupidrop，挂在 core-srop。旧 id stupiddrop 已废弃。
 hints: []
 writeups: []
 review:

@@ -20,7 +20,7 @@ resources:
   - res-ctf-wiki-stack-intro
 challenges:
   - ch-nightmare-hacklu15-stackstuff
-  - ch-nightmare-tu17-vulnchat2
+  - ch-nightmare-tuctf17-vulnchat2
 hints: []
 writeups: []
 review:

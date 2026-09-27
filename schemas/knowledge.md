@@ -16,7 +16,7 @@ type: technique                    # concept | technique | tool | environment | 
 prerequisites:                     # 依赖的其他知识点 id
   - core-stack-overflow
   - core-rop-basics
-  - core-got-plt-leak
+  - core-leak-basics
 
 why_learn: |                       # 为什么学（面向学习者的动机）
   ...

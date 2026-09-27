@@ -21,7 +21,7 @@ resources:
   - res-ctf-wiki-stack-intro
   - res-pwntools-docs
 challenges:
-  - ch-nightmare-inctf17-stupiddrop
+  - ch-nightmare-inctf17-stupidrop
   - ch-nightmare-csaw19-smallboi
   - ch-nightmare-swamp19-syscaller
 hints: []

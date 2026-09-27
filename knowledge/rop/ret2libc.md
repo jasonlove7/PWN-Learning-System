@@ -34,8 +34,9 @@ challenges:
 hints:
   - 挑战文件内渐进提供（Hint1→2→3），禁止跳级
 writeups:
-  - wu-nightmare-index          # 外部 writeup 入口（guyinatuxedo 的本题讲解）
-  - wu-ai-babyboi-summary       # AI 摘要示例（已标注）
+  - wu-nightmare-csaw19-babyboi
+# 同模块其余题的深页本轮只在侧栏见到链接，未逐页打开，故不挂 writeup id。
+# utc19_shellme 的猜测深链 404，同样不挂。
 review:
   method: |
     1 周后无提示重做 csaw19_babyboi；

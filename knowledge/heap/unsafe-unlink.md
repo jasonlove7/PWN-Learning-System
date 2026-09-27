@@ -19,9 +19,18 @@ resources:
   - res-how2heap
   - res-nightmare
   - res-sploitfun-malloc
-challenges:
-  - ch-nightmare-protostar-heap3
-  - ch-pwnable-kr-unlink
+challenges: []
+planned_challenges:
+  - id: ch-pwnable-kr-unlink
+    name: unlink
+    platform: pwnable.kr
+    status: research-needed
+    note: Toddler's Bottle 名单曾在 2026-09-27 的 play.php 核对中出现；本次未能再次读取该页，不建正式条目。
+  - id: ch-nightmare-protostar-heap3
+    name: heap3
+    platform: Protostar
+    status: research-needed
+    note: 2026-09-27 读取的 Nightmare 侧栏没有 protostar_heap3。不建正式条目。旧索引摘录不可当作该深页已核对。
 hints: []
 writeups: []
 review:

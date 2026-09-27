@@ -25,6 +25,9 @@ challenges:
   - ch-ropemporium-callme
   - ch-ropemporium-write4
   - ch-nightmare-bkp16-simplecalc
+  - ch-ropemporium-badchars
+  - ch-ropemporium-fluff
+  - ch-pwnable-kr-horcruxes
 hints: []
 writeups: []
 review:

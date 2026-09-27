@@ -15,11 +15,11 @@ prerequisites:
 why_selected: Nightmare §1 首题：纯粹的"溢出到返回地址"第一滴血。
 verification_status: platform-verified-challenge-listed
 writeup:
-  external:
-    - wu-nightmare-index
+  external: []
   ai_summary: ""
 reproducibility: medium
-notes_on_source: Nightmare §1 收录并配 writeup
+notes_on_source: |
+  2026-09-27 侧栏可见深链 https://guyinatuxedo.github.io/04-bof_variable/csaw18_boi/index.html ，本轮未打开该页正文，故不升为 deep-page verified，也不单列 writeup。
 ---
 
 # boi（CSAW CTF 2018）

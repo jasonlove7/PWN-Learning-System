@@ -12,7 +12,11 @@
 | pwnable.tw 题目级清单 | 平台题目 | ⚠️ 登录墙 | 平台已验证；具体题目待注册后人工核验 |
 | pwn.college dojo/模块深页 | 平台内容 | ⚠️ JS 渲染 | 平台已验证；模块名未逐一读取 |
 | picoCTF picoGym 分类页 | 平台内容 | ⚠️ JS 应用 | play.picoctf.org 无法自动读取 |
-| Nightmare 各章节深链 URL 模式 | 结构 | ⚠️ 未确认 | 索引已验证；深页 URL 模式未逐一确认（引用一律给根索引） |
+| Nightmare 侧栏有链接、但 2026-09-27 未打开正文的深页 | writeup | ⚠️ 未逐页打开 | 正式题仍指向站点根，`notes_on_source` 记下了侧栏 href。不单列 writeup |
+| `utc19_shellme` 深页 | writeup | ❌ 猜测 URL 404 | 索引有未链接的名字。`08-bof_dynamic/utc19_shellme` 与 `11-stack_pivoting/utc19_shellme` 均为 404。正式题保留为 listed |
+| pwnable.kr `cmd1` `cmd2` `uaf` `unlink` | 题目 | ⚠️ 本次未重读 play.php | 只在知识点 `planned_challenges` 中，status 为 research-needed。不建正式文件 |
+| Protostar heap3 | 题目 | ❌ 侧栏未见 | 2026-09-27 Nightmare 侧栏没有 `protostar_heap3`。`planned_challenges`，不建文件 |
+| how2heap 单题 | 题目 | — | 仓库已作为 `res-how2heap` 收录。它不是一道 challenge，id `ch-how2heap-lab` 只作 planned 说明 |
 | CTF Wiki /pwn/ 落地页 | 结构 | ❌ 404 | 站点按深页组织；从首页导航进入（已验证深页 2 个） |
 | ir0nstone.github.io 旧域名 | 结构 | ❌ 404 | 已迁移至 GitBook（新址已验证） |
 | HeapLAB（Udemy 付费课） | 课程 | ⚠️ 未验证 | ROP Emporium 站内推广；付费内容不在本项目验证范围 |

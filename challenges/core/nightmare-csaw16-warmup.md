@@ -14,11 +14,11 @@ prerequisites: []
 why_selected: Nightmare §2 首题：程序直接告诉你目标地址——纯"能不能覆盖"的检验。
 verification_status: platform-verified-challenge-listed
 writeup:
-  external:
-    - wu-nightmare-index
+  external: []
   ai_summary: ""
 reproducibility: medium
-notes_on_source: Nightmare §2 收录并配 writeup
+notes_on_source: |
+  2026-09-27 侧栏可见深链 https://guyinatuxedo.github.io/05-bof_callfunction/csaw16_warmup/index.html ，本轮未打开该页正文，故不升为 deep-page verified，也不单列 writeup。
 ---
 
 # warmup（CSAW CTF 2016）

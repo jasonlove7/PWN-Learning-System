@@ -16,11 +16,11 @@ why_selected: |
   检验对两段式的本质理解是否脱离"背 exp"。
 verification_status: platform-verified-challenge-listed
 writeup:
-  external:
-    - wu-nightmare-index
+  external: []
   ai_summary: ""
 reproducibility: medium
-notes_on_source: Nightmare §5 收录并配 writeup
+notes_on_source: |
+  2026-09-27 侧栏可见深链 https://guyinatuxedo.github.io/08-bof_dynamic/fb19_overfloat/index.html ，本轮未打开该页正文，故不升为 deep-page verified，也不单列 writeup。
 ---
 
 # overfloat（Facebook CTF 2019）—— Pilot ③

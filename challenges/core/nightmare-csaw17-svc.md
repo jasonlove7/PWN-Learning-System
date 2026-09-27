@@ -15,11 +15,11 @@ prerequisites:
 why_selected: Pilot ④：输出/输入受限的变体，考察在非标准 IO 下重建泄漏路径。
 verification_status: platform-verified-challenge-listed
 writeup:
-  external:
-    - wu-nightmare-index
+  external: []
   ai_summary: ""
 reproducibility: medium
-notes_on_source: Nightmare §5 收录并配 writeup
+notes_on_source: |
+  2026-09-27 侧栏可见深链 https://guyinatuxedo.github.io/08-bof_dynamic/csawquals17_svc/index.html ，本轮未打开该页正文，故不升为 deep-page verified，也不单列 writeup。
 ---
 
 # svc（CSAW CTF 2017）—— Pilot ④

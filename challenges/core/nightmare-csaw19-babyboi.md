@@ -6,7 +6,7 @@ event: CSAW CTF
 year: 2019
 category: core
 difficulty: basic
-url: https://guyinatuxedo.github.io/
+url: https://guyinatuxedo.github.io/08-bof_dynamic/csaw19_babyboi/index.html
 knowledge_points:
   - core-ret2libc
   - core-leak-basics
@@ -15,18 +15,21 @@ prerequisites:
 why_selected: |
   Pilot 模块第 1 题：教科书级 ret2libc——puts 泄漏 + 回 main + 二段 system("/bin/sh")。
   Nightmare（已验证索引）收录本题并配完整讲解 writeup。
-verification_status: platform-verified-challenge-listed
+verification_status: platform-and-challenge-verified
 writeup:
   external:
-    - wu-nightmare-index
-  ai_summary: wu-ai-babyboi-summary
+    - wu-nightmare-csaw19-babyboi
+  ai_summary: ""
 reproducibility: medium
-notes_on_source: 学习入口为 Nightmare §5（ROP Dynamically Compiled）；原赛事归档 URL 未验证
+notes_on_source: |
+  2026-09-27 打开深页，标题 Csaw 2019 Babyboi，页内有 writeup。
+  技术事实：无界读入小栈缓冲，并打印一个 libc 地址；主要防护是不可执行内存。
+  原赛事归档 URL 未验证。不另建 AI 摘要（旧指针 wu-ai-babyboi-summary 已移除）。
 ---
 
 # babyboi（CSAW CTF 2019）—— Pilot ①
 
-> 入口：https://guyinatuxedo.github.io/ → "5.) ROP Dynamically Compiled" → babyboi（含完整 writeup，做题后再看）
+> 入口：<https://guyinatuxedo.github.io/08-bof_dynamic/csaw19_babyboi/index.html>（页内有讲解，做题后再看）
 
 ## 任务
 标准 ret2libc 全流程：泄漏 puts 真实地址 → 定 libc → system("/bin/sh")。

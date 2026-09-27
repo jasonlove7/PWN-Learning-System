@@ -19,7 +19,8 @@ resources:
   - res-csapp
   - res-hacking-arte
   - res-compiler-explorer
-challenges: []
+challenges:
+  - ch-pwnable-kr-collision
 hints: []
 writeups: []
 review:

@@ -13,8 +13,9 @@
 
 ## 通用约定
 
-1. **frontmatter 必须可被 YAML 解析器解析**（`scripts/validation/validate_metadata.py` 校验必填字段与取值域）。
+1. **frontmatter 必须可被 `scripts/validation/validate_metadata.py` 解析**（必填字段、取值域、id 引用）。该脚本不访问网络。
 2. **未知信息写 `unknown`，禁止猜测**（作者、年份、URL 一律如此）。
 3. 所有对象必须包含 `verification_status` 与 `last_verified`（见 [verification.md](verification.md)）。
 4. Importance 与 Difficulty 是**两个独立维度**，取值 `1`–`5`（显示为 ⭐ 重复次数），绝不允许混用。
 5. 日期一律 `YYYY-MM-DD`。
+6. **引用方向**：Challenge 的 `knowledge_points` 是主要关系。Knowledge 的 `challenges` 是辅助索引，不要求每道正式题都被反指。尚未建文件的题只放 `planned_challenges`（`status: planned | research-needed`），校验脚本会拒绝把它们写进 `challenges`。详见 [../QUALITY-CHECK.md](../QUALITY-CHECK.md)。
