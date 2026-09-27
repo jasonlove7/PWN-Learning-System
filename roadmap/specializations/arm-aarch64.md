@@ -45,7 +45,21 @@ abi-aa 索引页上有一份单独链接：PAuth ABI Extension to ELF（`pauthab
 
 CTF Wiki `.../stackoverflow/arm/stack-intro/` 在 2026-09-27 返回 404。不要引用那条深链。
 
-## 与 x86 的差别（只保留 ARM32 上已能从 Azeria / ROP Emporium 对上的部分）
+## 从 x86-64 迁移时已经能讲清楚的部分
 
-- ARM32：返回地址在 `lr`，gadget 不是 x86 的 `ret`
-- AArch64 的寄存器宽度、SP 和调用约定以 AAPCS64 为准，不要从 ARM32 表推过去
+AAPCS64 写的是 A64，不是 ARM32。
+
+- 参数和返回值用 r0–r7。
+- 调用（`BL`）把返回地址放进 LR（r30），不是压到栈上。
+- 正常返回回到 LR 里的地址（文中举了 `RET`）。
+- SP 在访问和公开接口上要 16 字节对齐。
+- FP（r29）是否被用来串栈帧，由平台和函数自己决定，不是每份二进制都有。
+
+因此：x86-64 里「覆盖栈上的返回地址再 `ret`」不能原样搬过来。AArch64 上要先确认这个函数有没有把 LR 存进栈。ROP gadget 的形态本轮没有打开利用教程，不往下写。
+
+## 仍然没有的实践
+
+没有核对过架构为 AArch64 的 CTF 题，也没有对应 writeup。ROP Emporium 的 ARM 包是 ARMv5。本方向保持 skeleton，不标 A。
+
+PAC / BTI 仍是 Research Needed。索引链接 `pauthabielf64.rst` 的正文没打开。
+

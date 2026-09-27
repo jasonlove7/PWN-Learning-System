@@ -23,6 +23,7 @@
 | how2heap README 外链 acez.re（HITCON 2014 stkof） | writeup | ⚠️ 未打开 | 只看到 README 里的链接文字。正式 writeup 用 Nightmare 深页 |
 | abi-aa `pauthabielf64.rst` | PAC | ⚠️ 只见索引链接 | 2026-09-27 未打开正文。不建资源 |
 | AArch64 利用教程与题目 | 路线 | ⚠️ Research Needed | 本轮没有打开。AAPCS64 只覆盖调用约定 |
+| developer.arm.com/documentation/102374 AArch64 寄存器页与 Procedure Call Standard 页 | 文档 | ❌ 未读到正文 | 2026-09-27：301 后的 HTML 只有站点标题；随后 403。寄存器与 BL/LR 以已打开的 aapcs64.rst 为准 |
 | ir0nstone.github.io 旧域名 | 结构 | ❌ 404 | 已迁移至 GitBook（新址已验证） |
 | HeapLAB（Udemy 付费课） | 课程 | ⚠️ 未验证 | ROP Emporium 站内推广；付费内容不在本项目验证范围 |
 | 各 B 站 pwn 教学视频 | 视频 | ⚠️ 未验证 | 视频验证成本高，标准待定（ROADMAP-RESEARCH §8） |

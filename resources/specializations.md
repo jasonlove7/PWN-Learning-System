@@ -138,7 +138,9 @@ summary: AArch64 的官方过程调用标准：64 位寄存器、栈、参数如
 why_useful: 把 AArch64 调用约定和 ARM32 分开的第一份官方文本
 related_knowledge: [spec-arm-aarch64]
 maintenance_status: active
-notes: PAC 在同一索引里有单独文档 pauthabielf64.rst，本轮只确认链接存在，没有打开正文，故不另建资源。BTI 在该索引页没有单独文档链接。
+notes: 仓库内许可文件本轮未逐份打开，写 unknown。architecture_scope 只有 AArch64。不要把它当成 ARM32 调用约定，也不要把它当成利用教程。
+architecture_scope:
+  - AArch64
 ---
 id: res-azeria-arm
 title: Azeria Labs — Writing ARM Assembly (Part 1~7)

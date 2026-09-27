@@ -280,6 +280,14 @@ def load_resource_ids(errors: list[str], warnings: list[str]):
                 tier = data.get("tier")
                 if tier is not None and tier not in TIERS:
                     errors.append(f"{rid}: unknown tier {tier}")
+                scope = data.get("architecture_scope")
+                if scope is not None:
+                    if not isinstance(scope, list) or not scope:
+                        errors.append(f"{rid}: architecture_scope must be a non-empty list")
+                    else:
+                        for arch in scope:
+                            if arch not in {"ARM32", "AArch64", "x86", "x86_64"}:
+                                errors.append(f"{rid}: unknown architecture_scope {arch}")
                 if data.get("source_type") == "ai_generated" and data.get("verified") is True:
                     if not data.get("verification_method"):
                         errors.append(f"{rid}: ai_generated verified true without verification_method")

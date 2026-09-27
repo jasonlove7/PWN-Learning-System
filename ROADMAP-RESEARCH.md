@@ -426,6 +426,30 @@ BKP 2016 的 simple calc 是栈题，cookbook 是堆题，id 不同。
 
 ---
 
+## 14. Phase 3-E（2026-09-27）
+
+没有新增 AArch64 题目，没有新增知识点文件。
+
+再次打开了已经收录的 AAPCS64 原文（`aapcs64.rst`），把下面几句写进路线和骨架正文，因为它们直接决定「x86-64 的栈溢出不能原样搬过来」：
+
+- 通用寄存器 r0–r30；SP 是栈指针。
+- r0–r7 传参并返回结果。
+- r29 = FP，r30 = LR。
+- `BL` 把下一条指令地址写入 LR。
+- 正常返回回到 LR 中的地址，文中提到 `RET`。
+- 经 SP 访问内存时，以及在公开接口上，`SP mod 16 = 0`。
+- 帧记录是栈上两个 64 位值；平台可以不强制每个函数都建帧。
+
+developer.arm.com 上猜的两篇寄存器/调用约定页：第一次 301 到 support.arm.com，拿到的 HTML 只有 “Documentation – Arm Developer”，没有寄存器正文。后来带浏览器 UA 得到 403。不收为资源。
+
+ROP Emporium ret2win 的下载名只有 x86_64、x86、ARMv5、MIPS。没有 AArch64，没有 ARM64。
+
+`res-aapcs64` 增加 `architecture_scope: [AArch64]`。没有给 Azeria 或 ROP Emporium 填这个字段，因为旧资源块没有这项，而它们的架构已经写在 notes 和路线里。
+
+PAC：`pauthabielf64.rst` 仍只是索引链接，正文没打开。BTI 仍没有单独文档链接。不建知识点。
+
+---
+
 ## 9. 验证方法复现
 
 

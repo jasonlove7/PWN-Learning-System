@@ -12,7 +12,9 @@ prerequisites:
 why_learn: |
   嵌入式/移动方向的基础架构；ROP 方法论直接迁移，细节全面换新。
 objectives:
-  - 完成 roadmap/specializations/arm-aarch64.md 的 8 级阶梯
+  - 能指出哪些材料是 ARM32（Azeria、ROP Emporium ARMv5），哪些是 AArch64（只有 AAPCS64）
+  - 能用 AAPCS64 说出 r0–r7 传参、r29 是 FP、r30 是 LR，以及 BL 把返回地址写入 LR
+  - 能说明目前没有经过核对的 AArch64 题目，因此本方向还不是完整实践闭环
 resources:
   - res-azeria-arm
   - res-ropemporium
@@ -34,25 +36,38 @@ verification_status: partial-verified
 last_verified: 2026-09-27
 ---
 
-# ARM / AArch64（骨架）
+# ARM32 与 AArch64（骨架）
 
-## 知识点骨架
+> depth: skeleton。没有 AArch64 题目，不能当成完整模块。
 
-```text
-spec-arm-asm        ARM(32)与Thumb模式、条件执行、RISC 特性（对照 x86）
-spec-arm-registers  r0-r15（sp/lr/pc）；AArch64 x0-x30/sp/xzr
-spec-arm-insts      ldr/str、ldm/stm（多寄存器传输）、b/bl
-spec-arm-callconv   r0-r3 / x0-x7 传参；返回地址在 lr
-spec-arm-elf        ELF on ARM（interp/属性、soft/hard float）
-spec-arm-debug      qemu-arm + gdb-multiarch；pwndbg/gef 的 ARM 支持
-spec-arm-rop        gadget 形态差异（pc 在寄存器/无条件区）、pivot 变体
-spec-arm64-modern   AArch64 专属缓解（PAC/BTI）与应对
-```
+## 不要混用的两套材料
 
-## 已验证入口
-- Azeria Labs《Writing ARM Assembly》7 部（附 exploit 系列预告）
-- ROP Emporium 每关 ARMv5 版（从 ret2win 开始跨架构重训）
-- CTF Wiki 栈溢出 ARM/MIPS/RISC-V 变体章
+| 材料 | 架构 | 依据 |
+|------|------|------|
+| Azeria Part 1 | ARM32 / ARMv6 | 页面写明 32-bit |
+| ROP Emporium ret2win | ARMv5（ARM32） | 下载名是 `ret2win_armv5.zip`。页面没有 AArch64 / ARM64 |
+| AAPCS64（`res-aapcs64`） | 仅 AArch64 | 标题与正文写 Arm 64-bit / A64 |
 
-## v0.2 计划
-qemu 用户态/system 态实验环境文档 + ARM CTF 题目验证集。
+CTF Wiki 的 ARM 栈深链此前 404，不在这张表里。
+
+## 从 x86-64 过来时，AAPCS64 里已经写明的差别
+
+这些句子来自 2026-09-27 打开的 `aapcs64.rst`，不是从 ARM32 推出来的。
+
+- 通用寄存器是 r0–r30，64 位上下文里称 X 寄存器。SP 单独列出，是栈指针。
+- r0–r7 用来传入参数并返回结果。
+- r29 的特殊名是 FP（frame pointer）。r30 的特殊名是 LR（link register）。
+- `BL` 把顺序上的下一条指令地址（返回地址）写入 LR，再转到目标。
+- 正常返回是回到调用者放在 LR 里的那个地址，例如用 `RET`。
+- 通过 SP 访问内存时，以及在公开接口上，SP 必须 16 字节对齐（`SP mod 16 = 0`）。
+- 帧记录是栈上两个 64 位值，把当前帧链到调用者。平台可以要求始终维护，也可以允许小函数不建帧，甚至把 FP 当普通被调用者保存寄存器。所以不能假设每份二进制都有 x86-64 那种固定的 saved RBP。
+
+x86-64 上返回地址在栈上，`ret` 从栈里弹出。AArch64 上调用时返回地址先在 LR。溢出要影响返回，通常得先让函数把 LR 存进栈帧，再覆盖那一份。这一点是从上面的 BL/LR 规则推到利用上的，AAPCS64 本身不是漏洞文档。
+
+## 还没有
+
+- AArch64 的指令教程、ELF64 专页、ROP / ret2libc / syscall 题目
+- PAC、BTI 的正文。索引里有 `pauthabielf64.rst` 链接，没打开。BTI 没有单独文档链接
+
+没有这些，就不建 `spec-aarch64-*` 分文件，也不标 A。
+
