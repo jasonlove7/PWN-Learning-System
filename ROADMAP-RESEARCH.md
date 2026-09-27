@@ -508,6 +508,18 @@ CTF Wiki Android 深页未打开。没有原题页，所以 challenges 仍为空
 
 ---
 
+## 18. Phase 3-I（2026-09-27）
+
+打开了 https://ctf2.dasctf.com/dashboard 。
+
+返回的是前端页面：标题 CTF²。描述写明这里有长期开放的公开题库、每天一题，以及 DASCTF 赛季；登录后可以开靶机、提交 Flag。正文没有题目名、赛事或 URL。
+
+没有登录。没有猜测 API。因此没有新增 challenge，也没有改已有题目的 platform 或年份。
+
+CTF² 仍只是候选来源，记在 `research/unverified/`。它不是路线依据。
+
+---
+
 ## 9. 验证方法复现
 
 

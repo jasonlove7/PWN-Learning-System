@@ -31,6 +31,7 @@
 | AOSP `hidl/binder-ipc` | Binder | ⚠️ 打开了但没有定义 | 标题 Use binder IPC。不作为「Binder 是什么」的教材 |
 | JADX / apktool 官网 | 逆向工具 | ⚠️ 本轮未打开 | 不收资源，不写「必学」 |
 | Android CTF | challenge | ⚠️ 本轮未收录 | 没有原题页。不从「Android 通常是 ARM64」推断架构 |
+| CTF² https://ctf2.dasctf.com/dashboard | 平台 | ⚠️ 登录墙 | 2026-09-27 打开该 URL。HTML 标题是 CTF²。meta 写：登录后可以开靶机、提交 Flag；有长期公开题库、每天一题、DASCTF 赛季。页面是前端壳，没有题目列表。没有登录，没有猜接口。因此本轮没有从 CTF² 新增 challenge |
 | ir0nstone.github.io 旧域名 | 结构 | ❌ 404 | 已迁移至 GitBook（新址已验证） |
 | HeapLAB（Udemy 付费课） | 课程 | ⚠️ 未验证 | ROP Emporium 站内推广；付费内容不在本项目验证范围 |
 | 各 B 站 pwn 教学视频 | 视频 | ⚠️ 未验证 | 视频验证成本高，标准待定（ROADMAP-RESEARCH §8） |
