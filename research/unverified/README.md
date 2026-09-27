@@ -17,7 +17,8 @@
 | pwnable.kr `cmd1` `cmd2` `uaf` `unlink` | 题目 | ⚠️ 本次未重读 play.php | 只在知识点 `planned_challenges` 中，status 为 research-needed。不建正式文件 |
 | Protostar heap3 | 题目 | ❌ 侧栏未见 | 2026-09-27 Nightmare 侧栏没有 `protostar_heap3`。`planned_challenges`，不建文件 |
 | how2heap 单题 | 题目 | — | 仓库已作为 `res-how2heap` 收录。它不是一道 challenge，id `ch-how2heap-lab` 只作 planned 说明 |
-| CTF Wiki /pwn/ 落地页 | 结构 | ❌ 404 | 站点按深页组织；从首页导航进入（已验证深页 2 个） |
+| CTF Wiki ARM 栈深链 `.../stackoverflow/arm/stack-intro/` | 结构 | ❌ 404 | 2026-09-27。不把 ARM 栈章节当成已打开 |
+| CTF Wiki 内核深链 `.../kernel-mode/environment/` | 结构 | ❌ 404 | 2026-09-27。首页导航有 Kernel Mode 字样，章节页未核对 |
 | ir0nstone.github.io 旧域名 | 结构 | ❌ 404 | 已迁移至 GitBook（新址已验证） |
 | HeapLAB（Udemy 付费课） | 课程 | ⚠️ 未验证 | ROP Emporium 站内推广；付费内容不在本项目验证范围 |
 | 各 B 站 pwn 教学视频 | 视频 | ⚠️ 未验证 | 视频验证成本高，标准待定（ROADMAP-RESEARCH §8） |

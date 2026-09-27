@@ -16,6 +16,7 @@ objectives:
   - 完成 roadmap/specializations/linux-kernel.md 的 8 级阶梯
 resources:
   - res-xairy-kernel
+  - res-kernel-memory-allocation
   - res-ctf-wiki
   - res-pwn-college
 challenges: []

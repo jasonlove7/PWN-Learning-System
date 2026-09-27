@@ -16,6 +16,7 @@ objectives:
   - 完成 roadmap/specializations/windows-kernel.md 的 8 级阶梯
 resources:
   - res-windows-internals
+  - res-windows-driver-getting-started
   - res-ctf-wiki
 challenges: []
 hints: []

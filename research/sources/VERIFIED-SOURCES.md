@@ -47,6 +47,8 @@
 | 40 | res-52pojie | https://www.52pojie.cn/ | 活跃/板块侧重 | ✅ |
 | 41 | res-ir0nstone-notes | https://ir0nstone.gitbook.io/notes | 作者署名/内容范围 | ✅ |
 | 42 | res-liveoverflow | https://www.youtube.com/@LiveOverflow | 同意墙拦截（部分验证） | ⚠️ verified:false |
+| 43 | res-kernel-memory-allocation | https://docs.kernel.org/core-api/memory-allocation.html | 7.3.0-rc4 / Memory Allocation Guide / GFP | ✅ |
+| 44 | res-windows-driver-getting-started | https://learn.microsoft.com/en-us/windows-hardware/drivers/gettingstarted/ | 驱动入门，非漏洞教程 | ✅ |
 
 ## 说明
 

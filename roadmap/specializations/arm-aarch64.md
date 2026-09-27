@@ -15,6 +15,12 @@
 8. 实战             — ROP Emporium ARMv5 关卡、ARM CTF 题
 ```
 
+## 已核对与未核对（2026-09-27）
+
+- **ARM32：** Azeria Part 1 写明教程重点是 32 位，示例在 ARMv6。ROP Emporium 的 ret2win 页提供 `ret2win_armv5.zip`（见 `ch-ropemporium-ret2win`）。这两处是本方向目前唯一核对过的练习入口。
+- **AArch64：** 上面的阶梯后半把 AArch64 寄存器和 PAC 写在同一张表里，是迁移提示，不是已核对的课程。本轮没有打开一份系统的 AArch64 利用教程，所以不新建 `spec-aarch64-*` 知识点，也不收新资源。
+- **CTF Wiki 的 ARM 栈页：** 尝试打开 `.../stackoverflow/arm/stack-intro/` 得到 404。不要把那条深链当成已验证资料。
+
 ## 已验证入口资源
 
 - **Azeria Labs《Writing ARM Assembly》7 部系列**（英文，含后续 ARM exploit 开发系列）——S35

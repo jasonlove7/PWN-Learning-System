@@ -277,7 +277,65 @@ Specializations（自选方向，非必修）
 
 ---
 
+## 10. Phase 3-A 缺口审计（2026-09-27）
+
+> 本轮不新增知识点文件、不新增题目。只核对「仓库里已经有什么」和「哪些外部结构今天还能打开」。
+> 搜索没有被当作验证。打不开的 URL 记在下面，不进入 `resources/`。
+
+### 10.1 今天重新打开过的页面
+
+| 来源 | URL | 看到的事实 |
+|------|-----|------------|
+| how2heap | https://github.com/shellphish/how2heap | 仓库仍在。目录名从 `glibc_2.23` 到 `glibc_2.43`，另有 `obsolete/glibc_2.27`。README 分区含 Educational Heap Exploitation、Get Started、Applicable CTF Challenges、Hardening。MIT。星数页面显示 8.9k（与 2026-09-27 早先台账里的旧印象不必对齐，以页面为准）。 |
+| Linux Kernel Exploitation | https://github.com/xairy/linux-kernel-exploitation | 自述是链接集，不是课程。标题区有 Trainings、Contents、Books、Techniques、Vulnerabilities；目录还列了 Finding Bugs、Defensive、Exploits、Tools、Practice、Misc。CC-BY-4.0。更新说明指向 @andreyknvl，并写 Updated bimonthly。 |
+| kernel.org 内存分配 | https://docs.kernel.org/core-api/memory-allocation.html | 文档版本 7.3.0-rc4。标题 Memory Allocation Guide。这是分配器选择与 GFP，不是利用教程。适合作为内核内存的官方入口，尚未收入 `resources/`。 |
+| Windows 驱动入门 | https://learn.microsoft.com/en-us/windows-hardware/drivers/gettingstarted/ | Microsoft Learn 官方页，标题 Get Started with Drivers on Windows。要求读者已会 C 与函数指针。这是驱动文档入口，不是漏洞教程。尚未收入 `resources/`。 |
+| Azeria ARM Part 1 | https://azeria-labs.com/writing-arm-assembly-part-1/ | 页面写明重点是 ARM 32-bit，示例在 ARMv6（Raspberry Pi 1）。系列后续是数据类型与寄存器、指令、内存访问、条件与分支、栈与函数。正文没有把 AArch64 与 AArch32 分开讲。 |
+| CTF Wiki 堆概述 | https://ctf-wiki.org/pwn/linux/user-mode/heap/ptmalloc2/heap-overview/ | 仍可打开。侧栏 Ptmalloc2 下有：堆概述、堆相关数据结构、深入理解堆的实现、tcache、Unlink、Use After Free、Fastbin Attack、Tcache attack、House of Orange、House of Lore。 |
+| CTF Wiki 首页 | https://ctf-wiki.org/ | 导航里 Linux 与 Windows 下都有 Kernel Mode 字样。 |
+
+### 10.2 今天打不开、因此不能当新依据
+
+| URL | 结果 |
+|-----|------|
+| https://ctf-wiki.org/pwn/linux/user-mode/stackoverflow/arm/stack-intro/ | 404 |
+| https://ctf-wiki.org/pwn/linux/kernel-mode/environment/ | 404 |
+| https://ctf-wiki.org/pwn/linux/kernel-mode/environment/kernel-environment/ | 404 |
+
+内核章和 ARM 栈章的**具体深链**本轮没有打开。路线文件里「CTF Wiki 有内核章 / ARM 章」只保留为导航级，不能写成某一页已核对。
+
+### 10.3 与现有路线的关系（不改主线顺序）
+
+仓库主线已经是：Foundation → 栈 / ROP / ret2libc → 格式化字符串 → 堆（结构、tcache、原语、经典攻击、house / 现代 / IO_FILE）。这和今天仍能打开的 CTF Wiki 堆侧栏、how2heap 的按版本目录一致，所以 Phase 3 不重排这条顺序。
+
+缺口不在「缺一整条新主线」，而在：
+
+1. **堆的练习几乎没落地。** 12 个堆知识点里，只有 `adv-heap-overflow`（heap2）和 `adv-unsorted-bin-attack`（magicheap、zerostorage）有正式题。`adv-heap-overview`、`adv-heap-bins`、`adv-tcache`、`adv-uaf-double-free`、`adv-fastbin-attack`、`adv-largebin-attack`、`adv-unsafe-unlink`、`adv-house-of`、`adv-heap-modern` 没有正式题。how2heap 是示例仓库，继续不把它伪装成一道 challenge。
+2. **版本没有写进字段。** 路线正文提到 glibc 2.32 safe-linking、2.34 去掉 malloc hook，但 schema 没有 `version_dependent`。在加这个字段之前，不把不同版本的行为写进同一个「总是成立」的句子。
+3. **Core 主题大多已有文件，缺的是少数边界，不是整章。** 已有：ELF、汇编、调用约定、栈、syscall、GDB、pwntools、checksec 所在的 mitigations、ret2win / shellcode / ROP / ret2syscall / ret2libc / ret2csu / SROP / pivot / partial overwrite、GOT/PLT、格式化字符串（一个文件覆盖原理和 `%n`）。研究文档把 ret2dlresolve 放在 Advanced 选读，**没有对应知识点文件**。没有单独的 canary-leak / PIE-leak 知识点；它们散落在 mitigations 和具体题里。本轮不拆文件，避免和 `core-leak-basics` 重复。
+4. **八个方向仍是一个骨架文件加一张阶梯。** 没有 `spec-*` 的分步知识点，也没有专项题。ARM 阶梯把 ARM32 与 AArch64 写在同一张表里；Azeria Part 1 明确只教 32 位。下一步应把阶梯拆成「ARM32（有 Azeria + ROP Emporium ARMv5）」和「AArch64（本轮没有打开系统教程，不能假装已有）」。
+5. **Linux Kernel / Windows Kernel 的官方入口今天能打开，但还不是资源条目。** xairy 是链接集；kernel.org 是分配文档；Microsoft Learn 是驱动入门。三者都适合作为「先读什么」，都不替代实验手册。不在本轮把它们的目录抄成知识点。
+
+### 10.4 本轮明确不做
+
+- 不新增 challenge。Nightmare 上仍有约 12 道题只是索引级，深页没打开。
+- 不把 pwn.college 的题目或 writeup 写进来。
+- 不把 Android、IoT、Browser、Sandbox、Hypervisor 扩成课。Browser / Hypervisor 仍是研究不足。
+- 不采用搜索摘要里的仓库、论文或 CVE 编号。
+
+### 10.5 下一批（Phase 3-B）只做这些
+
+1. 给堆知识点补 `version_dependent` 与版本说明（只写 how2heap 目录和现有正文里已经核对过的断代：2.26 tcache、2.32 safe-linking、2.34 移除 hook）。不新编版本行为。
+2. 把 kernel.org Memory Allocation Guide 与 Microsoft Learn Drivers Getting Started 收成资源，如果字段能按 schema 填全。xairy 已有 `res-xairy-kernel`，只在核对后更新「它是链接集」这句，不改星数传说。
+3. 把 ARM 阶梯上「32 位已核对 / 64 位未核对」写进 `roadmap/specializations/arm-aarch64.md`，不新建 AArch64 知识点文件。
+4. 堆的下一道正式题必须先打开 Nightmare 或 how2heap 的具体页，再决定是 tcache 还是 UAF。本轮没有这样的页，所以不加题。
+
+*本节只记录 2026-09-27 这次会话里实际打开或确认 404 的 URL。*
+
+---
+
 ## 9. 验证方法复现
+
 
 - 逐 URL 实际访问（自动化 fetch + 渲染读取），记录 HTTP 状态与页面要点。
 - 搜索引擎仅用于**发现**候选来源，不作为最终依据（搜索引擎摘要不计入验证）。

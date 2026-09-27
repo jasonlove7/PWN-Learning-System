@@ -18,8 +18,9 @@
 
 ## 已验证入口资源
 
-- **xairy/linux-kernel-exploitation**（6.6k★，CC-BY-4.0，双月更新）——论文/技巧/漏洞/练习的权威链接集（ROADMAP-RESEARCH.md S34）
-- **CTF Wiki 内核章**（中文；内核基础/环境/防护/Kernel ROP/slab/cross-cache/double fetch）——S1
+- **Linux kernel docs — Memory Allocation Guide**（docs.kernel.org，Core API；分配器与 GFP，不是利用教程）——2026-09-27 打开，见 `res-kernel-memory-allocation`
+- **xairy/linux-kernel-exploitation**（链接集，不是课程；CC-BY-4.0；页面写 Updated bimonthly）——S34 / `res-xairy-kernel`
+- **CTF Wiki**：首页导航有 Kernel Mode。2026-09-27 尝试的内核深链返回 404，具体章节页未核对。
 - **pwn.college**（含系统安全/内核方向 dojo；遵守其不公开题解政策）——S6
 
 ## 知识点骨架（spec-linux-kernel-*，见 knowledge/specializations/linux-kernel.md）

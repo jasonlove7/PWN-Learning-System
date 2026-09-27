@@ -18,9 +18,9 @@
 
 ## 已验证入口资源
 
-- **Windows Internals 7th ed**（Yosifovich/Ionescu/Russinovich/Solomon，Microsoft Press 官方页已验证）——S29
-- **CTF Wiki Windows 章**（用户态/内核态）——S1
-- 微软官方文档（learn.microsoft.com：驱动开发/内核调试文档体系）
+- **Windows Internals 7th ed**（Microsoft Press 官方页已验证）——S29
+- **Get Started with Drivers on Windows**（Microsoft Learn，驱动入门，不是漏洞教程）——2026-09-27 打开，见 `res-windows-driver-getting-started`
+- **CTF Wiki**：首页导航有 Windows 下的 Kernel Mode。具体深页本轮未打开。
 
 ## 知识点骨架（spec-windows-kernel-*）
 

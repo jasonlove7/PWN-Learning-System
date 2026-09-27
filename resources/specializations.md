@@ -11,12 +11,48 @@ language: en
 tier: CORE
 verified: true
 verified_date: 2026-09-27
-verification_method: 访问仓库（6.6k stars、CC-BY-4.0、"双月更新"、2026 年条目在列）
+verification_method: 2026-09-27 再次打开 README。页面自述为链接集（不是课程）。可见分区含 Trainings、Contents、Books、Techniques、Vulnerabilities，目录还列 Finding Bugs、Defensive、Exploits、Tools、Practice、Misc。许可 CC-BY-4.0。更新说明指向 @andreyknvl，并写 Updated bimonthly。早先记录的 star 数本次不沿用。
 license: CC-BY-4.0
-summary: 内核利用资源权威索引：书籍/论文/技巧/漏洞(writeup)/工具/练习场。
+summary: 内核安全与利用的链接集：书籍、技巧、漏洞资料、工具和练习入口。不是一门按章节讲完的课。
 why_useful: Linux Kernel 方向的总入口
 related_knowledge: [spec-linux-kernel]
 maintenance_status: active
+---
+id: res-kernel-memory-allocation
+title: Memory Allocation Guide（Linux kernel docs）
+author: Linux kernel documentation project
+source: https://docs.kernel.org/core-api/memory-allocation.html
+url: https://docs.kernel.org/core-api/memory-allocation.html
+source_type: official-docs
+language: en
+tier: ADVANCED
+verified: true
+verified_date: 2026-09-27
+verification_method: 打开该页。文档版本显示 7.3.0-rc4。标题 Memory Allocation Guide。在 Core API 下，讲的是分配器选择与 GFP，不是漏洞利用。
+license: unknown
+summary: 内核里怎么申请内存的官方说明。用来建立「用户态 malloc 底下还有另一套分配器」的概念，不能代替利用教程。
+why_useful: spec-linux-kernel 阶梯第 1 级（内核内存）的官方入口
+related_knowledge: [spec-linux-kernel]
+maintenance_status: active
+notes: 页面没有单独摘出 SPDX，license 写 unknown。版本号会随文档站移动。
+---
+id: res-windows-driver-getting-started
+title: Get Started with Drivers on Windows
+author: Microsoft
+source: https://learn.microsoft.com/en-us/windows-hardware/drivers/gettingstarted/
+url: https://learn.microsoft.com/en-us/windows-hardware/drivers/gettingstarted/
+source_type: official-docs
+language: en
+tier: ADVANCED
+verified: true
+verified_date: 2026-09-27
+verification_method: 打开 Microsoft Learn 该页。标题 Get Started with Drivers on Windows。正文要求读者已会 C 和函数指针。这是驱动入门，不是内核漏洞教程。
+license: unknown
+summary: Windows 驱动文档的入口：驱动是什么、有哪些类型、从哪里开始写。配合 Windows Internals 看架构，不替代实验手册。
+why_useful: spec-windows-kernel 阶梯里「驱动与 IRP」之前的官方入口
+related_knowledge: [spec-windows-kernel]
+maintenance_status: active
+notes: 页面未摘出单独 license 名称。不要把这篇当成漏洞研究材料。
 ---
 id: res-man7-seccomp
 title: seccomp(2) manual page
