@@ -450,6 +450,24 @@ PAC：`pauthabielf64.rst` 仍只是索引链接，正文没打开。BTI 仍没�
 
 ---
 
+## 15. Phase 3-F（2026-09-27）
+
+没有新增内核题目，没有把骨架拆成多个知识点。
+
+打开的内核文档（版本号都是页面上的 7.3.0-rc4）：
+
+| URL | 结果 |
+|-----|------|
+| docs.kernel.org/core-api/mm-api.html | 标题 Memory Management APIs。节名 The Slab Cache。kmalloc：小于页大小的对象的常规分配方式。有 kfree。没有 SLUB 标题 |
+| docs.kernel.org/process/debugging/kgdb.html | 标题 Using kgdb, kdb and the kernel debugger internals。kgdb 是给 gdb 的源码级内核调试器。参数名含 kgdboc、kgdbwait、nokaslr |
+| docs.kernel.org/admin-guide/kernel-parameters.html | nokaslr：CONFIG_RANDOMIZE_BASE 下关闭内核和模块基址 ASLR。pti= [X86-64]：用户与内核页表隔离。nopti [X86-64] 等价于 pti=off。nosmep [PPC64s]、nosmap [PPC]：关掉 SMEP/SMAP。没有「自某版本默认开启」 |
+| docs.kernel.org/admin-guide/hw-vuln/index.html | 硬件漏洞索引。正文没有 KASLR、SMEP、SMAP、KPTI |
+| docs.kernel.org/dev-tools/gdb-kernel-debugging.html | 404 |
+
+不把 xairy 的链接集拆成题目。不收 pwn.college 的题。
+
+---
+
 ## 9. 验证方法复现
 
 

@@ -3,7 +3,21 @@
 > track: specialization ｜ 定位：CTF / Lab / 授权研究
 > 依赖：PWN Core 全部 + Advanced A-1（堆心智模型对理解 slab 有直接迁移价值）
 
-## 学习阶梯
+## 已打开的文档（2026-09-27）
+
+不要把下面的 8 级阶梯当成已经学完的课。阶梯是计划。核对过的只有这些：
+
+- Memory Allocation Guide：分配器选择与 GFP（`res-kernel-memory-allocation`）
+- Memory Management APIs：The Slab Cache；kmalloc 用于小于一页的对象（`res-kernel-mm-api`）。没有单独的 SLUB 章
+- kgdb：gdb 源码级内核调试；参数名含 kgdboc、kgdbwait、nokaslr（`res-kernel-kgdb`）。QEMU 接线没写在这页
+- kernel-parameters：`nokaslr`、`pti=`（X86-64）、`nosmep`/`nosmap`（PPC）。没有默认开启的版本（`res-kernel-parameters`）
+- xairy：链接集，不是课
+- CTF Wiki 内核深链：404
+- pwn.college：不收录题目和 writeup
+
+没有 Linux 内核 CTF 题进入 `challenges/`。猜过的 `dev-tools/gdb-kernel-debugging.html` 是 404。
+
+## 学习阶梯（计划，不是完成状态）
 
 ```text
 1. 内核基础        — 用户态 vs 内核态、syscall 路径、内核内存布局

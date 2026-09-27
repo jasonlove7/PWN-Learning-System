@@ -34,7 +34,61 @@ summary: 内核里怎么申请内存的官方说明。用来建立「用户态 m
 why_useful: spec-linux-kernel 阶梯第 1 级（内核内存）的官方入口
 related_knowledge: [spec-linux-kernel]
 maintenance_status: active
-notes: 页面没有单独摘出 SPDX，license 写 unknown。版本号会随文档站移动。
+notes: 页面没有单独摘出 SPDX，license 写 unknown。版本号会随文档站移动。architecture 未在该页限定为 x86_64。
+---
+id: res-kernel-mm-api
+title: Memory Management APIs（The Slab Cache）
+author: Linux kernel documentation project
+source: https://docs.kernel.org/core-api/mm-api.html
+url: https://docs.kernel.org/core-api/mm-api.html
+source_type: official-docs
+language: en
+tier: ADVANCED
+verified: true
+verified_date: 2026-09-27
+verification_method: 打开该页。文档版本 7.3.0-rc4。标题 Memory Management APIs。有 The Slab Cache 一节。kmalloc 的一句说明是：小于页大小的对象，通常用 kmalloc。同节能看到 kmalloc 与 kfree。没有单独的 SLUB 标题。
+license: unknown
+summary: 内核内存管理 API 索引。用来确认 kmalloc 是小对象的常规分配方式，以及文档把这块叫做 Slab Cache。不是 SLUB 内部结构，也不是利用教程。
+why_useful: 把「内核堆」从用户态 malloc 分开的官方一句
+related_knowledge: [spec-linux-kernel]
+maintenance_status: active
+notes: 文档版本 7.3.0-rc4 会变。没有写 SLUB 与 SLAB 的区别，不要补。
+---
+id: res-kernel-kgdb
+title: Using kgdb, kdb and the kernel debugger internals
+author: Linux kernel documentation project
+source: https://docs.kernel.org/process/debugging/kgdb.html
+url: https://docs.kernel.org/process/debugging/kgdb.html
+source_type: official-docs
+language: en
+tier: ADVANCED
+verified: true
+verified_date: 2026-09-27
+verification_method: 打开该页。文档版本 7.3.0-rc4。标题如上。kgdb 被写成用 gdb 做内核源码级调试。可见启动参数名包括 kgdboc、kgdbwait、nokaslr。
+license: unknown
+summary: 官方的 kgdb/kdb 说明：第二台机器上的 gdb、如何让内核停住。nokaslr 出现在启动参数列表里，但本页没有定义 KASLR。
+why_useful: 内核调试入口。QEMU 怎么串起来，这一页没有写。
+related_knowledge: [spec-linux-kernel]
+maintenance_status: active
+notes: 猜过的 gdb-kernel-debugging.html 是 404，不要用那条 URL。
+---
+id: res-kernel-parameters
+title: The kernel’s command-line parameters
+author: Linux kernel documentation project
+source: https://docs.kernel.org/admin-guide/kernel-parameters.html
+url: https://docs.kernel.org/admin-guide/kernel-parameters.html
+source_type: official-docs
+language: en
+tier: ADVANCED
+verified: true
+verified_date: 2026-09-27
+verification_method: 打开该页并检索参数名。nokaslr 写明在 CONFIG_RANDOMIZE_BASE 打开时，关掉内核和模块基址的 ASLR。nosmep/nosmap 的架构标记是 PPC/PPC64s，不是 x86。pti= 标记为 X86-64，说明用户与内核页表隔离，关掉会去掉加固。nopti 在 X86-64 上等价于 pti=off。
+license: unknown
+summary: 内核命令行参数表。只摘了本轮读到的 nokaslr、nosmep、nosmap、pti、nopti。没有从这页推出「某版本默认开启」。
+why_useful: 缓解机制只写参数表里有的那几句
+related_knowledge: [spec-linux-kernel]
+maintenance_status: active
+notes: hw-vuln 索引页没有 KASLR/SMEP/SMAP/KPTI 这四个词，不要把那一页当成这四项的定义。
 ---
 id: res-windows-driver-getting-started
 title: Get Started with Drivers on Windows

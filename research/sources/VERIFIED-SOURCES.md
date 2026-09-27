@@ -50,6 +50,9 @@
 | 43 | res-kernel-memory-allocation | https://docs.kernel.org/core-api/memory-allocation.html | 7.3.0-rc4 / Memory Allocation Guide / GFP | ✅ |
 | 44 | res-windows-driver-getting-started | https://learn.microsoft.com/en-us/windows-hardware/drivers/gettingstarted/ | 驱动入门，非漏洞教程 | ✅ |
 | 45 | res-aapcs64 | https://github.com/ARM-software/abi-aa/blob/main/aapcs64/aapcs64.rst | AArch64 调用约定；寄存器/栈/参数 | ✅ |
+| 46 | res-kernel-mm-api | https://docs.kernel.org/core-api/mm-api.html | 7.3.0-rc4；Slab Cache；kmalloc 小于一页 | ✅ |
+| 47 | res-kernel-kgdb | https://docs.kernel.org/process/debugging/kgdb.html | 7.3.0-rc4；kgdb/kdb；kgdboc、nokaslr | ✅ |
+| 48 | res-kernel-parameters | https://docs.kernel.org/admin-guide/kernel-parameters.html | nokaslr；pti= [X86-64]；nosmep/nosmap 标 PPC | ✅ |
 
 ## 说明
 
