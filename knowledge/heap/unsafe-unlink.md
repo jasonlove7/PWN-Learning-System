@@ -41,6 +41,13 @@ sources:
   - "pwnable.kr unlink 存在性 (verified 2026-09-27)"
 verification_status: verified
 last_verified: 2026-09-27
+version_dependent: true
+verified_versions:
+  - glibc: "latest"
+    notes: how2heap README 把 unsafe_unlink.c 的版本格写成 latest，示例链到 glibc_2.35/unsafe_unlink.c。glibc_2.23 目录里也有同名文件。这不是「每个历史版本字节级相同」。
+  - glibc: "2.26"
+    notes: how2heap glibc_ChangeLog.md 在 2.26 记下 unlink 增加了 chunk size 与 next->prev_size 的一致性检查。
+practice_status: no_verified_challenge
 ---
 
 # unsafe unlink

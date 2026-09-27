@@ -32,6 +32,8 @@ sources:
   - "how2heap (verified 2026-09-27)"
 verification_status: verified
 last_verified: 2026-09-27
+version_dependent: false
+practice_status: no_verified_challenge
 ---
 
 # 堆基础：arena 与 chunk

@@ -32,6 +32,10 @@ sources:
   - "Nightmare §17 File Exploitation (verified 2026-09-27)"
 verification_status: verified
 last_verified: 2026-09-27
+version_dependent: true
+verified_versions:
+  - glibc: "2.31 - 2.33"
+    notes: how2heap README 的 house_of_io.c 版本格是 2.31 - 2.33。不是「FILE 结构只在这些版本存在」。
 ---
 
 # IO_FILE / FSOP

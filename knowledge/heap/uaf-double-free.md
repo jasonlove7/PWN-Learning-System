@@ -36,6 +36,11 @@ sources:
   - "Nightmare §9 UAF 题组 (verified 2026-09-27)"
 verification_status: verified
 last_verified: 2026-09-27
+version_dependent: true
+verified_versions:
+  - glibc: "> 2.25"
+    notes: how2heap README 把 house_of_botcake.c 写成绕过 tcache 上的 double free 限制，版本格 > 2.25。UAF 作为漏洞类本身不绑定单一版本。
+practice_status: no_verified_challenge
 ---
 
 # UAF 与 double free

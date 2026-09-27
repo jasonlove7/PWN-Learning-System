@@ -30,6 +30,9 @@ sources:
   - "sploitfun bins 细节 (verified 2026-09-27)"
 verification_status: verified
 last_verified: 2026-09-27
+version_dependent: true
+verified_versions: []
+practice_status: no_verified_challenge
 ---
 
 # bins 体系

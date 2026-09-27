@@ -376,6 +376,25 @@ def main() -> int:
                 errors.append(f"{path}: ai_generated verified without verification_method")
             if "AI Generated" not in (ROOT / path).read_text(encoding="utf-8"):
                 warnings.append(f"{path}: ai_generated file does not contain 'AI Generated'")
+        vd = row.get("version_dependent", False)
+        if vd not in (True, False):
+            errors.append(f"{path}: version_dependent must be boolean")
+        versions = row.get("verified_versions")
+        if versions is not None and not isinstance(versions, list):
+            errors.append(f"{path}: verified_versions is not a list")
+            versions = []
+        if vd is True and not versions:
+            warnings.append(f"{path}: version_dependent true but verified_versions empty")
+        for item in versions or []:
+            if not isinstance(item, dict) or "glibc" not in item or "notes" not in item:
+                errors.append(f"{path}: verified_versions entry needs glibc and notes")
+        ch = row.get("challenges")
+        empty_ch = ch in (None, [], "")
+        if row.get("practice_status") == "no_verified_challenge" and not empty_ch:
+            errors.append(f"{path}: practice_status no_verified_challenge but challenges is non-empty")
+        if empty_ch and row.get("track") == "mainline" and str(row.get("id", "")).startswith("adv-"):
+            if row.get("practice_status") != "no_verified_challenge" and row.get("version_dependent") is not False:
+                warnings.append(f"{path}: advanced knowledge has no challenge and no practice_status")
 
     for row in challenges:
         path = row["__path__"]

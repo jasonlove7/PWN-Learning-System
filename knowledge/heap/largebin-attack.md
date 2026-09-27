@@ -26,6 +26,11 @@ sources:
   - "how2heap large_bin_attack (verified 2026-09-27)"
 verification_status: verified
 last_verified: 2026-09-27
+version_dependent: true
+verified_versions:
+  - glibc: "< 2.42"
+    notes: how2heap README 的 large_bin_attack.c 版本格是 < 2.42，并指向一条 patch。不是「所有 glibc 都成立」。
+practice_status: no_verified_challenge
 ---
 
 # largebin attack

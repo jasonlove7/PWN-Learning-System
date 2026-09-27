@@ -40,6 +40,11 @@ sources:                           # 本知识点内容依据（研究溯源）
 
 verification_status: verified      # 见 schemas/verification.md
 last_verified: 2026-09-27
+version_dependent: true        # 仅当不同 libc/架构版本行为不同。默认省略 = false
+verified_versions:             # 只写打开过来源里的版本句，不写印象
+  - glibc: "2.26"
+    notes: 来源原文里关于这一版的那一句
+practice_status: no_verified_challenge   # 可选。没有正式题时才写
 ```
 
 ## 字段规则
@@ -49,3 +54,4 @@ last_verified: 2026-09-27
 - `objectives` 必须是可观察的行为（"能独立写出…"、"能解释…"），不是内容清单。
 - `sources` 记录该知识点正文的技术依据；与 `resources`（推荐给学习者的材料）职责不同。
 - Specialization 的骨架知识点允许 `depth: skeleton` 标注（frontmatter 可加 `depth: full | standard | skeleton`），并在正文显著标注研究不足处。
+- `version_dependent` 省略时视为 false。为 true 时，`verified_versions` 里每一条都必须能指回来源。没有打开过来源的版本不要写。`practice_status: no_verified_challenge` 只在 `challenges` 为空时使用。

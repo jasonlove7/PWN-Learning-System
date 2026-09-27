@@ -34,6 +34,15 @@ sources:
   - "how2heap glibc_2.32+/tcache_poisoning 与 decrypt_safe_linking (verified 2026-09-27)"
 verification_status: verified
 last_verified: 2026-09-27
+version_dependent: true
+verified_versions:
+  - glibc: "2.26"
+    notes: how2heap glibc_ChangeLog.md 写 tcache（per-thread cache）在 2.26 引入，Ubuntu 构建从 2.27 起启用。Nightmare tcache 讲解页写 2.26 之前做不了这种攻击。
+  - glibc: "> 2.25"
+    notes: how2heap README 把 tcache_poisoning.c 标成 > 2.25，并写 2.32 及之后需要 heap leak。
+  - glibc: ">= 2.32"
+    notes: how2heap README 把 decrypt_safe_linking.c 标成 >= 2.32。仓库有 glibc_2.32/ 目录，其中有该文件；glibc_2.31/ 的文件列表里没有它。
+practice_status: no_verified_challenge
 ---
 
 # tcache 与 safe-linking
@@ -45,14 +54,18 @@ tcache_entry { next; key; }                            // key = tcache_struct �
 ```
 - tcache_perthread_struct 本身是**堆上第一个 chunk** → 控制它 = 控制整个 tcache（heap 泄漏后的高价值目标）。
 
-## 演进三步（做题必须知道版本）
-| 版本 | 变化 | 攻击含义 |
-|------|------|----------|
-| 2.26 | tcache 引入 | LIFO 直进直出，无任何检查 |
-| 2.29 | tcache_entry 加 key；double free 时全链扫描 | naive double free 死；换 key（UAF 改写）仍活 |
-| 2.32 | **safe-linking**: next 存 `ptr ^ (addr>>12)` | 投毒需先知堆地址（heap leak 前置化） |
+## 演进（只保留打开过来源的句子）
 
-## safe-linking 手算
+| 依据 | 版本写法 | 含义 |
+|------|----------|------|
+| how2heap `glibc_ChangeLog.md` | 2.26 引入；Ubuntu 构建自 2.27 启用 | 更早的 glibc 没有这条 per-thread cache |
+| Nightmare tcache 讲解页 | 2.26 之前做不了 | 与上一行一致，不是新的版本事实 |
+| how2heap README `tcache_poisoning.c` | > 2.25；2.32 及之后需要 heap leak | 投毒示例的适用范围，不是「所有版本同一写法」 |
+| how2heap README `decrypt_safe_linking.c` | >= 2.32 | 密文指针从这一档示例才出现 |
+
+2.29 的 key、双 free 全链扫描没有出现在这次打开的 how2heap changelog 或 README 里，所以不写进 `verified_versions`。正文若仍提到，只当作待核对，不能当成已证实的断代。
+
+## safe-linking 手算（概念，不是某一版的源码摘录）
 ```text
 存入: PROTECT_PTR(&e->next, T) = T ^ ((uintptr_t)&e->next >> 12)
 读出: T = next ^ (存位置 >> 12)

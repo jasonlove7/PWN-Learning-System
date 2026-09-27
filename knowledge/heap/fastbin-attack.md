@@ -31,6 +31,13 @@ sources:
   - "how2heap fastbin_dup 系列 (verified 2026-09-27)"
 verification_status: verified
 last_verified: 2026-09-27
+version_dependent: true
+verified_versions:
+  - glibc: "< 2.43"
+    notes: how2heap README 的 fastbin_dup.c 版本格是 < 2.43。
+  - glibc: "2.26 - 2.42"
+    notes: how2heap README 的 fastbin_reverse_into_tcache.c 版本格是 2.26 - 2.42。
+practice_status: no_verified_challenge
 ---
 
 # fastbin attack

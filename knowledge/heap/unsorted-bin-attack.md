@@ -22,6 +22,8 @@ resources:
 challenges:
   - ch-nightmare-hitcon-magicheap
   - ch-nightmare-0ctf16-zerostorage
+# 有正式题，故不写 practice_status。版本字段只覆盖 README 里 overlapping_chunks 的 < 2.29，
+# 不覆盖这两道题各自的 glibc（页面没有给出可写入 verified_versions 的版本句）。
 hints: []
 writeups: []
 review:
@@ -31,6 +33,10 @@ sources:
   - "how2heap unsorted_bin_attack (verified 2026-09-27)"
 verification_status: verified
 last_verified: 2026-09-27
+version_dependent: true
+verified_versions:
+  - glibc: "< 2.29"
+    notes: how2heap README 的 overlapping_chunks.c 写的是 unsorted bin 上改已释放块的 size，版本格 < 2.29。不是 unsorted bin attack 本体的全部版本史。
 ---
 
 # unsorted bin attack

@@ -31,6 +31,13 @@ sources:
   - "how2heap house_of_* 各版本示例存在性 (verified 2026-09-27)"
 verification_status: verified
 last_verified: 2026-09-27
+version_dependent: true
+verified_versions:
+  - glibc: "latest"
+    notes: how2heap README 将 house_of_lore、house_of_einherjar、house_of_spirit 等标成 latest。house_of_force 的 top size 检查版本本轮没有在 changelog 里看到，不写入。
+  - glibc: "2.31 - 2.33"
+    notes: how2heap README 把 house_of_io.c 标成 2.31 - 2.33。
+practice_status: no_verified_challenge
 ---
 
 # house of 系列总览

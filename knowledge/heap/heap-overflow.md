@@ -28,6 +28,10 @@ sources:
   - "how2heap poison_null_byte (verified 2026-09-27)"
 verification_status: verified
 last_verified: 2026-09-27
+version_dependent: true
+verified_versions:
+  - glibc: "latest"
+    notes: how2heap README 把 poison_null_byte.c 标成 latest。单字节溢出本身不是某一个 glibc 才有的漏洞类。
 ---
 
 # 堆溢出与 off-by-one/null
