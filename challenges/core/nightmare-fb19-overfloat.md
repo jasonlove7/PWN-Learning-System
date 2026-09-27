@@ -6,7 +6,7 @@ event: Facebook CTF
 year: 2019
 category: core
 difficulty: intermediate
-url: https://guyinatuxedo.github.io/
+url: https://guyinatuxedo.github.io/08-bof_dynamic/fb19_overfloat/index.html
 knowledge_points:
   - core-ret2libc
 prerequisites:
@@ -14,13 +14,14 @@ prerequisites:
 why_selected: |
   Pilot ③（综合检验）：输入经过浮点解析（strtof 循环写入栈）——payload 也要"能被浮点编码"。
   检验对两段式的本质理解是否脱离"背 exp"。
-verification_status: platform-verified-challenge-listed
+verification_status: platform-and-challenge-verified
 writeup:
-  external: []
+  external:
+    - wu-nightmare-fb19-overfloat
   ai_summary: ""
 reproducibility: medium
 notes_on_source: |
-  2026-09-27 侧栏可见深链 https://guyinatuxedo.github.io/08-bof_dynamic/fb19_overfloat/index.html ，本轮未打开该页正文，故不升为 deep-page verified，也不单列 writeup。
+  2026-09-27 打开深页。章节 Facebook CTF 2019 Overfloat。未检查的栈溢出来自反复写入 float。原赛事归档 URL 未验证。
 ---
 
 # overfloat（Facebook CTF 2019）—— Pilot ③

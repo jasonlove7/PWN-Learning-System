@@ -24,7 +24,9 @@ challenges:
   - ch-nightmare-csaw19-babyboi
   - ch-nightmare-utc19-shellme
 hints: []
-writeups: []
+writeups:
+  - wu-nightmare-csaw19-babyboi
+# utc19_shellme 深页未找到，不挂 writeup。greeting 的格式化泄漏挂在 core-fmt-string。
 review:
   method: 从零写一个完整两段式 exp
   interval: 首次后 2 周

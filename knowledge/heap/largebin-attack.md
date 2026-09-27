@@ -16,20 +16,24 @@ objectives:
   - 能解释插入时两处写目标的推导与伪造条件
 resources:
   - res-how2heap
+  - res-nightmare
 challenges: []
 hints: []
 writeups: []
 review:
-  method: 画一次 largebin 插入的指针变化图
+  method: 画一次 largebin 插入的指针变化图；对照 Nightmare 的两页讲解，不要把它当成已收录的题
   interval: 首次后 2 个月
 sources:
   - "how2heap large_bin_attack (verified 2026-09-27)"
+  - "Nightmare largebin explanation pt 0 and pt 1 (verified 2026-09-27, libc-2.23.so demo, not a CTF challenge)"
 verification_status: verified
 last_verified: 2026-09-27
 version_dependent: true
 verified_versions:
   - glibc: "< 2.42"
     notes: how2heap README 的 large_bin_attack.c 版本格是 < 2.42，并指向一条 patch。不是「所有 glibc 都成立」。
+  - glibc: "2.23"
+    notes: Nightmare Large Bin Attack Explanation pt 0 写明演示用 libc-2.23.so。pt 1 同样写了 libc-2.23.so，并引用 how2heap 的 glibc_2.26 路径。这两页都写明是讲解，不是 CTF 题。
 practice_status: no_verified_challenge
 ---
 
@@ -52,7 +56,14 @@ practice_status: no_verified_challenge
 - house of storm（unsorted+largebin 组合造任意分配）。
 
 ## 版本注意
-- glibc 对 largebin 的检查在 2.30+ 逐步增强（size 一致性类）；做题先确认版本行为（how2heap 版本目录实测）。
+
+- how2heap README 把 `large_bin_attack.c` 标成 `< 2.42`。不要写成所有 glibc 都成立。
+- Nightmare 的两页讲解（pt 0 / pt 1）用 `libc-2.23.so` 做演示，并写明不是 CTF 题。pt 1 还指向 how2heap 的 `glibc_2.26` 路径；本仓库的 how2heap 目录列表里没有 `glibc_2.26/`，以 README 版本格为准。
+- 正文旧句「2.30+ 检查逐步增强」没有出现在这次打开的原文里，不要当成已核对。
+
+## 实践
+
+没有正式题。`practice_status: no_verified_challenge`。how2heap 的 `large_bin_attack.c` 是示例，不是 challenge。
 
 ## 定位
 importance 3：出题频率低于 tcache/UAF，但理解它是中高阶题（与 IO_FILE 联动）的门票。

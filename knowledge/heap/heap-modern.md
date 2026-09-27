@@ -14,9 +14,9 @@ prerequisites:
 why_learn: |
   "单点技术"到"现代题解法"的整合层：版本判断 → 原语组合 → 出口选择。
 objectives:
-  - 能按题面 libc 版本立刻划定可用技术集合
-  - 能完成标准现代链：UAF/double-free → tcache poisoning(safe-linking) → 任意写 → 出口
-  - 能说出 hook 移除后三类主流出口（IO_FILE/exit 链/TLS 类）
+  - 能按 how2heap README 的版本格判断一道示例能不能用（例如 tcache_poisoning 是 > 2.25，2.32 起需要 heap leak）
+  - 能把已有正式题按版本分开：PlaidCTF 2019 cpp 的页内库是 glibc 2.27；HITCON 2014 stkof 早于 tcache
+  - 能指出哪些旧结论本轮没有原文：2.29 的 tcache key、2.34 移除 hook
 resources:
   - res-how2heap
   - res-ctf-wiki-heap-overview

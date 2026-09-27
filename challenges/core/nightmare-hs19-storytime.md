@@ -6,19 +6,20 @@ event: Hackover CTF
 year: 2019
 category: core
 difficulty: basic
-url: https://guyinatuxedo.github.io/
+url: https://guyinatuxedo.github.io/08-bof_dynamic/hs19_storytime/index.html
 knowledge_points:
   - core-ret2libc
 prerequisites:
   - ch-nightmare-csaw19-babyboi
 why_selected: Pilot ⑤：大缓冲满 read——最接近"理想条件"的 ret2libc，适合作为 1 个月后的复测题。
-verification_status: platform-verified-challenge-listed
+verification_status: platform-and-challenge-verified
 writeup:
-  external: []
+  external:
+    - wu-nightmare-hs19-storytime
   ai_summary: ""
 reproducibility: medium
 notes_on_source: |
-  2026-09-27 侧栏可见深链 https://guyinatuxedo.github.io/08-bof_dynamic/hs19_storytime/index.html ，本轮未打开该页正文，故不升为 deep-page verified，也不单列 writeup。
+  2026-09-27 打开深页。章节 hs 2019 storytime（HSCTF 2019）。读入过小的局部数组，无 canary。原赛事归档 URL 未验证。
 ---
 
 # storytime（Hackover CTF 2019）—— Pilot ⑤

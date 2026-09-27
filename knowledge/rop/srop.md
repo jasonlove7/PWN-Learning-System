@@ -25,7 +25,10 @@ challenges:
   - ch-nightmare-csaw19-smallboi
   - ch-nightmare-swamp19-syscaller
 hints: []
-writeups: []
+writeups:
+  - wu-nightmare-inctf17-stupidrop
+  - wu-nightmare-swamp19-syscaller
+  - wu-nightmare-csaw19-smallboi
 review:
   method: 画 SigreturnFrame 关键字段图；默写触发序列（rax=15 → syscall）
   interval: 首次后 1 个月

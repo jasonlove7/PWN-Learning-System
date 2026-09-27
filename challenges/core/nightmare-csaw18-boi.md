@@ -6,20 +6,21 @@ event: CSAW CTF
 year: 2018
 category: core
 difficulty: beginner
-url: https://guyinatuxedo.github.io/
+url: https://guyinatuxedo.github.io/04-bof_variable/csaw18_boi/index.html
 knowledge_points:
   - core-stack-overflow
   - core-ret2win
 prerequisites:
   - fnd-pwntools
 why_selected: Nightmare §1 首题：纯粹的"溢出到返回地址"第一滴血。
-verification_status: platform-verified-challenge-listed
+verification_status: platform-and-challenge-verified
 writeup:
-  external: []
+  external:
+    - wu-nightmare-csaw18-boi
   ai_summary: ""
 reproducibility: medium
 notes_on_source: |
-  2026-09-27 侧栏可见深链 https://guyinatuxedo.github.io/04-bof_variable/csaw18_boi/index.html ，本轮未打开该页正文，故不升为 deep-page verified，也不单列 writeup。
+  2026-09-27 打开深页。章节 Csaw 2018 Quals Boi。栈溢出写进邻近整数并改变后续检查。原赛事归档 URL 未验证。
 ---
 
 # boi（CSAW CTF 2018）

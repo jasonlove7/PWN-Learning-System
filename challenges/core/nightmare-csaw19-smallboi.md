@@ -6,19 +6,20 @@ event: CSAW CTF
 year: 2019
 category: core
 difficulty: intermediate
-url: https://guyinatuxedo.github.io/
+url: https://guyinatuxedo.github.io/16-srop/csaw19_smallboi/index.html
 knowledge_points:
   - core-srop
 prerequisites:
   - core-ret2syscall
 why_selected: Nightmare 12.) SROP 经典最小样本。
-verification_status: platform-verified-challenge-listed
+verification_status: platform-and-challenge-verified
 writeup:
-  external: []
+  external:
+    - wu-nightmare-csaw19-smallboi
   ai_summary: ""
 reproducibility: medium
 notes_on_source: |
-  2026-09-27 侧栏可见深链 https://guyinatuxedo.github.io/16-srop/csaw19_smallboi/index.html ，本轮未打开该页正文，故不升为 deep-page verified，也不单列 writeup。
+  2026-09-27 打开深页。章节 Csaw 2019 Smallboi。栈溢出接到 sigreturn。原赛事归档 URL 未验证。
 ---
 
 # smallboi（CSAW CTF 2019）

@@ -6,19 +6,20 @@ event: CSAW CTF
 year: 2016
 category: core
 difficulty: beginner
-url: https://guyinatuxedo.github.io/
+url: https://guyinatuxedo.github.io/05-bof_callfunction/csaw16_warmup/index.html
 knowledge_points:
   - core-stack-overflow
   - core-ret2win
 prerequisites: []
 why_selected: Nightmare §2 首题：程序直接告诉你目标地址——纯"能不能覆盖"的检验。
-verification_status: platform-verified-challenge-listed
+verification_status: platform-and-challenge-verified
 writeup:
-  external: []
+  external:
+    - wu-nightmare-csaw16-warmup
   ai_summary: ""
 reproducibility: medium
 notes_on_source: |
-  2026-09-27 侧栏可见深链 https://guyinatuxedo.github.io/05-bof_callfunction/csaw16_warmup/index.html ，本轮未打开该页正文，故不升为 deep-page verified，也不单列 writeup。
+  2026-09-27 打开深页。章节 Csaw 2016 Quals Warmup。无界栈读可以覆盖保存的返回指针。原赛事归档 URL 未验证。
 ---
 
 # warmup（CSAW CTF 2016）

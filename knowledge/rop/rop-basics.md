@@ -29,7 +29,8 @@ challenges:
   - ch-ropemporium-fluff
   - ch-pwnable-kr-horcruxes
 hints: []
-writeups: []
+writeups:
+  - wu-nightmare-bkp16-simplecalc
 review:
   method: 纯手工（不用 ROP 对象）构造一条三参数链
   interval: 首次后 2 周

@@ -22,7 +22,9 @@ challenges:
   - ch-nightmare-csaw17-pilot
   - ch-nightmare-tamu19-pwn3
 hints: []
-writeups: []
+writeups:
+  - wu-nightmare-tamu19-pwn3
+  - wu-nightmare-csaw17-pilot
 review:
   method: 手写 execve("/bin/sh",0,0) 无 NULL 版 shellcode 的伪代码级解释
   interval: 首次后 2 周

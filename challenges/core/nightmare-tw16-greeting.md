@@ -6,20 +6,21 @@ event: Tokyo Westerns CTF
 year: 2016
 category: core
 difficulty: intermediate
-url: https://guyinatuxedo.github.io/
+url: https://guyinatuxedo.github.io/10-fmt_strings/tw16_greeting/index.html
 knowledge_points:
   - core-fmt-string
   - core-leak-basics
 prerequisites:
   - ch-nightmare-backdoor17-bbpwn
 why_selected: Nightmare §6 进阶代表：泄漏+写的组合应用。
-verification_status: platform-verified-challenge-listed
+verification_status: platform-and-challenge-verified
 writeup:
-  external: []
+  external:
+    - wu-nightmare-tw16-greeting
   ai_summary: ""
 reproducibility: medium
 notes_on_source: |
-  2026-09-27 侧栏可见深链 https://guyinatuxedo.github.io/10-fmt_strings/tw16_greeting/index.html ，本轮未打开该页正文，故不升为 deep-page verified，也不单列 writeup。
+  2026-09-27 打开深页。章节 Tokyowesterns 2016 greeting。用户文本被当作格式串。原赛事归档 URL 未验证。
 ---
 
 # greeting（Tokyo Westerns CTF 2016）

@@ -22,7 +22,9 @@ challenges:
   - ch-nightmare-hacklu15-stackstuff
   - ch-nightmare-tuctf17-vulnchat2
 hints: []
-writeups: []
+writeups:
+  - wu-nightmare-hacklu15-stackstuff
+  - wu-nightmare-tuctf17-vulnchat2
 review:
   method: 计算题：给偏移差算需要覆盖的字节数与成功率
   interval: 首次后 1 个月

@@ -21,7 +21,9 @@ challenges:
   - ch-ropemporium-ret2win
   - ch-nightmare-csaw16-warmup
 hints: []
-writeups: []
+writeups:
+  - wu-nightmare-csaw16-warmup
+# ROP Emporium ret2win 的官方页本身就是题目说明，没有单独的第三方 writeup 条目。
 review:
   method: 一次无提示重做
   interval: 首次后 3 天

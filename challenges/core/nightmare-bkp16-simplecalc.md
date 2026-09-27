@@ -6,19 +6,20 @@ event: BKP CTF
 year: 2016
 category: core
 difficulty: intermediate
-url: https://guyinatuxedo.github.io/
+url: https://guyinatuxedo.github.io/07-bof_static/bkp16_simplecalc/index.html
 knowledge_points:
   - core-rop-basics
 prerequisites:
   - core-ret2syscall
 why_selected: Nightmare §4 静态 ROP 代表题：长链构造与 syscall 出口综合训练。
-verification_status: platform-verified-challenge-listed
+verification_status: platform-and-challenge-verified
 writeup:
-  external: []
+  external:
+    - wu-nightmare-bkp16-simplecalc
   ai_summary: ""
 reproducibility: medium
 notes_on_source: |
-  2026-09-27 侧栏可见深链 https://guyinatuxedo.github.io/07-bof_static/bkp16_simplecalc/index.html ，本轮未打开该页正文，故不升为 deep-page verified，也不单列 writeup。
+  2026-09-27 打开深页。章节 Boston Key Part 2016 Simple Calc。保存结果时向固定栈槽拷贝了未检查的数量。原赛事归档 URL 未验证。
 ---
 
 # simplecalc（BKP CTF 2016）

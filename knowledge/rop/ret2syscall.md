@@ -21,7 +21,9 @@ resources:
 challenges:
   - ch-nightmare-dcquals16-feedme
 hints: []
-writeups: []
+writeups:
+  - wu-nightmare-dcquals16-feedme
+  - wu-nightmare-bkp16-simplecalc
 review:
   method: 默写 64/32 位两种寄存器布局
   interval: 首次后 2 周

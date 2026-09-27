@@ -25,7 +25,10 @@ challenges:
   - ch-nightmare-tw16-greeting
   - ch-pwnable-kr-passcode
 hints: []
-writeups: []
+writeups:
+  - wu-nightmare-backdoor17-bbpwn
+  - wu-nightmare-tw16-greeting
+# pwnable.kr passcode 没有单独的外部 writeup 条目。
 review:
   method: 手工推一道 %n 写的参数布局（不用 pwntools）
   interval: 首次后 2 周；进堆前再复习 %n 改指针思想

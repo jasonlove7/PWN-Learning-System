@@ -26,7 +26,9 @@ challenges:
   - ch-pwnable-kr-bof
   - ch-nightmare-csaw18-boi
 hints: []
-writeups: []
+writeups:
+  - wu-nightmare-csaw18-boi
+  - wu-nightmare-csaw16-warmup
 review:
   method: 换一道新题从零独立完成偏移计算
   interval: 首次后 1 周

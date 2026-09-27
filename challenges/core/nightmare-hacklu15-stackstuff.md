@@ -6,19 +6,20 @@ event: Hack.lu CTF
 year: 2015
 category: core
 difficulty: intermediate
-url: https://guyinatuxedo.github.io/
+url: https://guyinatuxedo.github.io/15-partial_overwrite/hacklu15_stackstuff/index.html
 knowledge_points:
   - core-partial-overwrite
 prerequisites:
   - core-ret2libc
 why_selected: Nightmare 专题 10.) Partial Overwrite 代表题。
-verification_status: platform-verified-challenge-listed
+verification_status: platform-and-challenge-verified
 writeup:
-  external: []
+  external:
+    - wu-nightmare-hacklu15-stackstuff
   ai_summary: ""
 reproducibility: medium
 notes_on_source: |
-  2026-09-27 侧栏可见深链 https://guyinatuxedo.github.io/15-partial_overwrite/hacklu15_stackstuff/index.html ，本轮未打开该页正文，故不升为 deep-page verified，也不单列 writeup。
+  2026-09-27 打开深页。章节 hacklu 2015 stackstuff。有长度限制的读仍然溢出并改到保存的返回地址。原赛事归档 URL 未验证。
 ---
 
 # stackstuff（Hack.lu CTF 2015）

@@ -31,7 +31,9 @@ sources:
 verification_status: verified
 last_verified: 2026-09-27
 version_dependent: true
-verified_versions: []
+verified_versions:
+  - glibc: "2.26"
+    notes: how2heap glibc_ChangeLog.md 写 tcache 在 2.26 引入。tcache 是另一条 per-thread 链，不在本文件标题的四类 bin 里，但 free 的路径会先经过它。细节见 adv-tcache。
 practice_status: no_verified_challenge
 ---
 

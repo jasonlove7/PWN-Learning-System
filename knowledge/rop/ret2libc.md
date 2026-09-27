@@ -35,8 +35,10 @@ hints:
   - 挑战文件内渐进提供（Hint1→2→3），禁止跳级
 writeups:
   - wu-nightmare-csaw19-babyboi
-# 同模块其余题的深页本轮只在侧栏见到链接，未逐页打开，故不挂 writeup id。
-# utc19_shellme 的猜测深链 404，同样不挂。
+  - wu-nightmare-fb19-overfloat
+  - wu-nightmare-csaw17-svc
+  - wu-nightmare-hs19-storytime
+# utc19_shellme 的深页仍是 404，不挂 writeup。
 review:
   method: |
     1 周后无提示重做 csaw19_babyboi；

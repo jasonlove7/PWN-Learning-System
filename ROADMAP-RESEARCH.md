@@ -392,6 +392,23 @@ abi-aa 索引上能看到 PAuth ABI（`pauthabielf64.rst`）的链接，正文�
 
 ---
 
+## 12. Phase 3-C（2026-09-27）
+
+本阶段不新增题目。把已经收录、但深页之前只写在 `notes_on_source` 里的 11 道 Nightmare 题打开，升为 `platform-and-challenge-verified`，并各建一条 external writeup。
+
+打开过、确认是讲解而不是题、因此不收录：
+
+| URL | 页上的话 |
+|-----|----------|
+| `32-largebin_attack/largebin_explanation0/index.html` | 标题 Large Bin Attack Explannation pt 0。讲解，不是 CTF。演示 `libc-2.23.so`。 |
+| `32-largebin_attack/largebin_explanation1/index.html` | pt 1，同样不是题。也写了 `libc-2.23.so`，并提到 how2heap 的 glibc_2.26 路径。 |
+
+`adv-largebin-attack` 因此仍然是 `practice_status: no_verified_challenge`。版本字段补了一条 2.23 演示，没有编造题目。
+
+`utc19_shellme` 仍没有可用深页，保持 listed。
+
+---
+
 ## 9. 验证方法复现
 
 
