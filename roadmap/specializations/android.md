@@ -1,8 +1,24 @@
 # Android Security 学习路线
 
-> track: specialization ｜ 依赖：ARM/AArch64 方向（native 利用）+ Linux 基础
+> track: specialization
+> Android 是平台。CPU 架构看 ELF / 题目本身，不从「手机通常是 ARM」推断。
+> 依赖可以包括 Linux 基础；AArch64 只有在原生库被证实是 AArch64 时才接上。
 
-## 学习阶梯
+## 已打开（2026-09-27）
+
+| 层 | 资源 |
+|----|------|
+| 架构 | `res-aosp-architecture`。Binder 只有侧栏链接，正文未定义 |
+| APK | `res-android-app-fundamentals` |
+| ART | `res-android-art`（含 AOT） |
+| 沙箱 | `res-android-app-sandbox`（每应用 UID 与进程） |
+| SELinux | `res-android-selinux`（5.x 及以上 enforcing） |
+| NDK / JNI | `res-android-ndk`。没有 CPU 架构 |
+| 调试 | `res-android-adb`、`res-android-logcat` |
+
+没有 Android CTF 进入 `challenges/`。
+
+## 学习阶梯（计划，不是完成状态）
 
 ```text
 1. Android 架构     — App/Framework/系统服务/ART/HAL/内核 分层（AOSP 官方）

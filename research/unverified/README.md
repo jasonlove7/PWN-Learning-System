@@ -28,6 +28,9 @@
 | Linux 内核 CTF 题 | challenge | ⚠️ 本轮未收录 | 没有打开过同时满足「是 Linux 内核、架构明确、有原题 URL」的页面。xairy 仍是链接集 |
 | learn.microsoft.com WinDbg kernel getting-started 与 setting-up-kernel-mode-debugging 两条猜测 URL | 调试 | ❌ 404 | 2026-09-27。内核调试步骤改用已打开的 Echo Kernel Mode 实验 |
 | Windows 内核 CTF | challenge | ⚠️ 本轮未收录 | 没有打开过原题页。Echo 实验是微软示例驱动调试，不是题 |
+| AOSP `hidl/binder-ipc` | Binder | ⚠️ 打开了但没有定义 | 标题 Use binder IPC。不作为「Binder 是什么」的教材 |
+| JADX / apktool 官网 | 逆向工具 | ⚠️ 本轮未打开 | 不收资源，不写「必学」 |
+| Android CTF | challenge | ⚠️ 本轮未收录 | 没有原题页。不从「Android 通常是 ARM64」推断架构 |
 | ir0nstone.github.io 旧域名 | 结构 | ❌ 404 | 已迁移至 GitBook（新址已验证） |
 | HeapLAB（Udemy 付费课） | 课程 | ⚠️ 未验证 | ROP Emporium 站内推广；付费内容不在本项目验证范围 |
 | 各 B 站 pwn 教学视频 | 视频 | ⚠️ 未验证 | 视频验证成本高，标准待定（ROADMAP-RESEARCH §8） |

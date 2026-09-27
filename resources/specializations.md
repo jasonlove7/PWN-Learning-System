@@ -208,8 +208,130 @@ verified: true
 verified_date: 2026-09-27
 verification_method: 访问页面（分层模型、Binder 导航专章确认）
 license: CC-BY（AOSP 文档惯例，以站点声明为准）
-summary: Android 软件栈官方分层文档（App/Framework/ART/HAL/内核）。
-why_useful: Android 方向地基
+summary: Android 软件栈官方分层文档。页上写出的层包括应用、框架、系统服务、ART、HAL、原生守护进程与库、内核。侧栏有 Binder IPC 链接，正文没有 Binder 的定义句。
+why_useful: Android 方向的架构入口。不是利用教程，也不是 CPU 架构说明
+related_knowledge: [spec-android]
+maintenance_status: active
+notes: 2026-09-27 再次打开。不要把侧栏链接写成「Binder 专章已核对」。
+---
+id: res-android-app-sandbox
+title: Application Sandbox
+author: Android Open Source Project
+source: https://source.android.com/docs/security/app-sandbox
+url: https://source.android.com/docs/security/app-sandbox
+source_type: official-docs
+language: en
+tier: ADVANCED
+verified: true
+verified_date: 2026-09-27
+verification_method: 打开 AOSP 该页。标题 Application Sandbox。正文写每个应用有自己的用户 ID 和进程，以便内核对应用之间、以及应用与系统之间做隔离。
+license: unknown
+summary: 官方的应用沙箱说明：一应用一 UID、一进程，隔离由内核来做。没有写某个 Android 版本的默认开关。
+why_useful: 安全模型和 Linux UID 的连接点
+related_knowledge: [spec-android]
+maintenance_status: active
+---
+id: res-android-selinux
+title: Security-Enhanced Linux in Android
+author: Android Open Source Project
+source: https://source.android.com/docs/security/features/selinux
+url: https://source.android.com/docs/security/features/selinux
+source_type: official-docs
+language: en
+tier: ADVANCED
+verified: true
+verified_date: 2026-09-27
+verification_method: 打开 AOSP 该页。标题 Security-Enhanced Linux in Android。SELinux 对所有进程做强制访问控制，包括 root。页内写 Android 5.x 及更高版本全部处于 enforcing mode。
+license: unknown
+summary: Android 上的 SELinux 是强制访问控制。enforcing 这句话带了版本：5.x 及更高。没有写策略怎么绕。
+why_useful: 沙箱之上的另一层强制边界
+related_knowledge: [spec-android]
+maintenance_status: active
+notes: 版本句只限于页面上的「5.x and higher / enforcing」。不要外推更细的版本。
+---
+id: res-android-adb
+title: Android Debug Bridge (adb)
+author: Android Developers
+source: https://developer.android.com/tools/adb
+url: https://developer.android.com/tools/adb
+source_type: official-docs
+language: en
+tier: ADVANCED
+verified: true
+verified_date: 2026-09-27
+verification_method: 打开 developer.android.com 该页。标题 Android Debug Bridge (adb)。adb 被写成与设备通信的命令行工具。
+license: unknown
+summary: 官方 adb 说明：从电脑和设备或模拟器通信。用来调试和安装，不是攻击工具教程。
+why_useful: 调试入口
+related_knowledge: [spec-android]
+maintenance_status: active
+---
+id: res-android-logcat
+title: Logcat command-line tool
+author: Android Developers
+source: https://developer.android.com/tools/logcat
+url: https://developer.android.com/tools/logcat
+source_type: official-docs
+language: en
+tier: ADVANCED
+verified: true
+verified_date: 2026-09-27
+verification_method: 打开该页。标题 Logcat command-line tool。logcat 转储系统消息，包括应用用 Log 类打出的消息。
+license: unknown
+summary: 看设备日志的官方命令行工具。
+why_useful: 和 adb 分开的调试工具
+related_knowledge: [spec-android]
+maintenance_status: active
+---
+id: res-android-app-fundamentals
+title: Application fundamentals
+author: Android Developers
+source: https://developer.android.com/guide/components/fundamentals
+url: https://developer.android.com/guide/components/fundamentals
+source_type: official-docs
+language: en
+tier: ADVANCED
+verified: true
+verified_date: 2026-09-27
+verification_method: 打开该页。标题 Application fundamentals。APK 被写成带 .apk 后缀的归档，装着运行时需要的内容，设备用它来安装应用。可见标题 The manifest file。
+license: unknown
+summary: 应用基础：APK 是安装用的归档。清单文件有单独标题。没有把 DEX 结构讲完。
+why_useful: APK 的官方定义，不是逆向教程
+related_knowledge: [spec-android]
+maintenance_status: active
+---
+id: res-android-ndk
+title: Get started with the NDK
+author: Android Developers
+source: https://developer.android.com/ndk/guides
+url: https://developer.android.com/ndk/guides
+source_type: official-docs
+language: en
+tier: ADVANCED
+verified: true
+verified_date: 2026-09-27
+verification_method: 打开该页。标题 Get started with the NDK。NDK 是一套工具，让你在 Android 上用 C 和 C++，并通过 JNI 从 Java 调用这些原生代码。
+license: unknown
+summary: NDK 与 JNI 的官方入口。它把 Java 和原生 ELF 连起来，但不是内存破坏教程。
+why_useful: Android Native 和传统 PWN 的分界说明
+related_knowledge: [spec-android]
+maintenance_status: active
+notes: 不写「Android 手机通常是 ARM64」。本页没有 CPU 架构。
+---
+id: res-android-art
+title: Android runtime and Dalvik
+author: Android Open Source Project
+source: https://source.android.com/docs/core/runtime
+url: https://source.android.com/docs/core/runtime
+source_type: official-docs
+language: en
+tier: ADVANCED
+verified: true
+verified_date: 2026-09-27
+verification_method: 打开 AOSP 该页。标题 Android runtime and Dalvik。ART 是应用和部分系统服务的托管运行时。页内写 ART 引入 ahead-of-time (AOT) 编译。
+license: unknown
+summary: ART 的官方说明，并提到 AOT。不是 DEX 字节码手册。
+why_useful: 把「应用代码怎么跑」和 native .so 分开
 related_knowledge: [spec-android]
 maintenance_status: active
 ---

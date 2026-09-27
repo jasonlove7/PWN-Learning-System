@@ -488,6 +488,26 @@ Windows Internals 第 7 版仍只有书目页，不写章节内容。
 
 ---
 
+## 17. Phase 3-H（2026-09-27）
+
+没有新增 Android 题，没有拆知识点，没有写利用，没有收 JADX/apktool（没打开）。
+
+| URL | 结果 |
+|-----|------|
+| source.android.com/docs/core/architecture | 再次打开。标题 Architecture overview。层包括应用、框架、系统服务、ART、HAL、原生库与守护进程、内核。侧栏有 Binder 链接，正文没有 Binder 定义 |
+| source.android.com/docs/security/app-sandbox | 每应用自己的 UID 和进程，内核做隔离 |
+| source.android.com/docs/security/features/selinux | 强制访问控制，包括 root。Android 5.x 及更高为 enforcing |
+| source.android.com/docs/core/runtime | 标题 Android runtime and Dalvik。ART 是托管运行时，并引入 AOT |
+| developer.android.com/guide/components/fundamentals | APK 是 .apk 归档，用于安装。标题 The manifest file |
+| developer.android.com/ndk/guides | NDK：用 C/C++，经 JNI 从 Java 调用。无 CPU 架构 |
+| developer.android.com/tools/adb | adb：与设备通信的命令行工具 |
+| developer.android.com/tools/logcat | logcat：转储系统消息，含应用 Log |
+| source.android.com/docs/core/architecture/hidl/binder-ipc | 标题 Use binder IPC。讲驱动改动和 vndbinder，没有 Binder 定义。不收成「Binder 是什么」 |
+
+CTF Wiki Android 深页未打开。没有原题页，所以 challenges 仍为空。
+
+---
+
 ## 9. 验证方法复现
 
 

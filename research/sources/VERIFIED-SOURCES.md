@@ -57,6 +57,13 @@
 | 50 | res-windows-ioctl-intro | https://learn.microsoft.com/en-us/windows-hardware/drivers/kernel/introduction-to-i-o-control-codes | IOCTL 经 IRP；DeviceIoControl | ✅ |
 | 51 | res-windows-windbg-install | https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/ | WinDbg；用户态与内核态；x64 和 ARM64 | ✅ |
 | 52 | res-windows-echo-kmdf-lab | https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/debug-universal-drivers---step-by-step-lab--echo-kernel-mode- | WinDbg 调试 KMDF Echo；不是 CTF | ✅ |
+| 53 | res-android-app-sandbox | https://source.android.com/docs/security/app-sandbox | 每应用 UID 与进程 | ✅ |
+| 54 | res-android-selinux | https://source.android.com/docs/security/features/selinux | MAC；5.x+ enforcing | ✅ |
+| 55 | res-android-adb | https://developer.android.com/tools/adb | 与设备通信 | ✅ |
+| 56 | res-android-logcat | https://developer.android.com/tools/logcat | 转储系统消息 | ✅ |
+| 57 | res-android-app-fundamentals | https://developer.android.com/guide/components/fundamentals | APK 是 .apk 归档 | ✅ |
+| 58 | res-android-ndk | https://developer.android.com/ndk/guides | NDK 与 JNI；无 CPU 架构 | ✅ |
+| 59 | res-android-art | https://source.android.com/docs/core/runtime | ART；AOT | ✅ |
 
 ## 说明
 
