@@ -25,3 +25,9 @@ Thumbs.db
 # notes that are personal and not meant for publication
 notebook/personal/
 *.local.md
+
+# frontend
+web/node_modules/
+web/.next/
+web/out/
+
