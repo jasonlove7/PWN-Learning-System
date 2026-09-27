@@ -108,6 +108,77 @@ related_knowledge: [spec-windows-kernel]
 maintenance_status: active
 notes: 页面未摘出单独 license 名称。不要把这篇当成漏洞研究材料。
 ---
+id: res-windows-wdm-intro
+title: Introduction to WDM
+author: Microsoft
+source: https://learn.microsoft.com/en-us/windows-hardware/drivers/kernel/introduction-to-wdm
+url: https://learn.microsoft.com/en-us/windows-hardware/drivers/kernel/introduction-to-wdm
+source_type: official-docs
+language: en
+tier: ADVANCED
+verified: true
+verified_date: 2026-09-27
+verification_method: 打开 Microsoft Learn 该页。标题 Introduction to WDM。页首写明 WDM 不再是推荐模型，新驱动应先看 Choosing a driver model，并建议考虑 KMDF。正文定义 WDM 为跨 Windows 的源码兼容驱动模型，遵循其规则的内核态驱动称为 WDM drivers。
+license: unknown
+summary: 驱动模型入门，不是漏洞页。WDM 是旧模型；微软在这篇里把 KMDF 写成更简单的接口。
+why_useful: 把「写驱动」和「内核利用」分开的第一页
+related_knowledge: [spec-windows-kernel]
+maintenance_status: active
+notes: 不要把 WDM 写成当前唯一或推荐模型。
+---
+id: res-windows-ioctl-intro
+title: Introduction to I/O Control Codes
+author: Microsoft
+source: https://learn.microsoft.com/en-us/windows-hardware/drivers/kernel/introduction-to-i-o-control-codes
+url: https://learn.microsoft.com/en-us/windows-hardware/drivers/kernel/introduction-to-i-o-control-codes
+source_type: official-docs
+language: en
+tier: ADVANCED
+verified: true
+verified_date: 2026-09-27
+verification_method: 打开该页。标题 Introduction to I/O Control Codes。IOCTL 用于用户态程序与驱动通信，或驱动栈内部通信，通过 IRP 发送。用户态用 DeviceIoControl，I/O 管理器创建 IRP_MJ_DEVICE_CONTROL。
+license: unknown
+summary: IOCTL 是用户态和驱动之间的一种通信码，走 IRP。这是攻击面从哪来的官方定义，不是利用步骤。
+why_useful: 驱动通信入口。不代替漏洞教程
+related_knowledge: [spec-windows-kernel]
+maintenance_status: active
+---
+id: res-windows-windbg-install
+title: Install WinDbg
+author: Microsoft
+source: https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/
+url: https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/
+source_type: official-docs
+language: en
+tier: ADVANCED
+verified: true
+verified_date: 2026-09-27
+verification_method: 打开该页。标题 Install WinDbg。WinDbg 被写成可以分析崩溃转储、调试实时的用户态和内核态代码，并检查 CPU 寄存器和内存。支持的处理器架构写的是 x64 和 ARM64。内核调试入门指向 Echo Kernel-Mode 实验。
+license: unknown
+summary: WinDbg 的安装页，同时定义了它能调试用户态和内核态。架构是 x64 与 ARM64，不是「Windows」。
+why_useful: 内核调试工具入口
+related_knowledge: [spec-windows-kernel]
+maintenance_status: active
+notes: 猜过的 getting-started-with-windbg-kernel-mode 与 setting-up-kernel-mode-debugging 两条 URL 是 404。
+---
+id: res-windows-echo-kmdf-lab
+title: Debug Windows Drivers Step-By-Step Lab (Echo Kernel Mode)
+author: Microsoft
+source: https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/debug-universal-drivers---step-by-step-lab--echo-kernel-mode-
+url: https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/debug-universal-drivers---step-by-step-lab--echo-kernel-mode-
+source_type: official-docs
+language: en
+tier: ADVANCED
+verified: true
+verified_date: 2026-09-27
+verification_method: 打开该页。标题 Debug Windows Drivers Step-By-Step Lab (Echo Kernel Mode)。描述写明用 WinDbg 调试 echo 内核态示例驱动。实验要求两台 Windows 11 机器、WDK，并下载构建 KMDF echo 驱动。这是调试实验，不是有漏洞的 CTF。
+license: unknown
+summary: 官方实验：用 WinDbg 调试微软的 KMDF Echo 示例驱动。用来学内核调试流程，不收录为 challenge。
+why_useful: 有步骤的内核调试练习，仍然不是 Kernel PWN 题
+related_knowledge: [spec-windows-kernel]
+maintenance_status: active
+notes: 实验写明主机和目标都是 Windows 11。不要把它标成 x86 或 AArch64，页面没有写目标 CPU。
+---
 id: res-man7-seccomp
 title: seccomp(2) manual page
 author: man-pages 项目（Michael Kerrisk 维护）

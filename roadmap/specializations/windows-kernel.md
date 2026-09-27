@@ -3,7 +3,21 @@
 > track: specialization ｜ 定位：**严格限定 CTF / Lab / 授权安全研究**
 > 依赖：Foundation 全部（尤其汇编/内存模型）；建议先完成 PWN Core 建立利用心智模型
 
-## 学习阶梯
+## 五层，不要并在一起（2026-09-27）
+
+阶梯下面仍是计划。核对过的只有：
+
+| 层 | 打开的页 | 不是什么 |
+|----|----------|----------|
+| 驱动开发 | Get Started with Drivers；Introduction to WDM（WDM 不再是推荐模型，建议 KMDF）；Introduction to I/O Control Codes | 不是利用 |
+| 内核调试 | Install WinDbg（用户态和内核态；处理器写的是 x64 和 ARM64）；Echo Kernel Mode 实验（WinDbg 调试 KMDF echo，Windows 11 双机） | Echo 不是 CTF |
+| Internals | Windows Internals 第 7 版书目页 | 没有逐章核对 |
+| 安全机制 | 无 | 不写默认开启的版本 |
+| Kernel PWN | 无 | 没有题 |
+
+猜过的 `getting-started-with-windbg-kernel-mode` 和 `setting-up-kernel-mode-debugging-in-windbg--kernel-mode-` 是 404。内核调试步骤以 Echo 实验为准。
+
+## 学习阶梯（计划，不是完成状态）
 
 ```text
 1. Windows 架构     — 用户态/内核态、ntoskrnl、hal、系统调用路径(sysenter/syscall)

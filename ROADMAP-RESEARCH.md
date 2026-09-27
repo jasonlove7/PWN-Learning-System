@@ -468,6 +468,26 @@ PAC：`pauthabielf64.rst` 仍只是索引链接，正文没打开。BTI 仍没�
 
 ---
 
+## 16. Phase 3-G（2026-09-27）
+
+没有新增 Windows 内核题，没有拆知识点，没有写利用。
+
+打开的 Microsoft Learn 页：
+
+| URL | 结果 |
+|-----|------|
+| .../kernel/introduction-to-wdm | 标题 Introduction to WDM。页首：WDM 不再是推荐模型；新驱动看 Choosing a driver model；建议考虑 KMDF。WDM 是为了跨 Windows 源码兼容 |
+| .../gettingstarted/choosing-a-driver-model | 标题 Choose a Driver Model。按功能驱动、过滤驱动、软件驱动等选择，文中出现 KMDF、UMDF、WDM。没有收成单独资源，避免和 WDM 页重复堆「模型名单」 |
+| .../kernel/introduction-to-i-o-control-codes | IOCTL 用于用户态与驱动通信，或驱动之间通信，通过 IRP。用户态 DeviceIoControl → IRP_MJ_DEVICE_CONTROL |
+| .../drivers/debugger/ | 标题 Install WinDbg。WinDbg 分析转储、调试用户态和内核态、检查寄存器和内存。处理器：x64 和 ARM64。内核入门链接指向 Echo 实验 |
+| .../debugger/debug-universal-drivers---step-by-step-lab--echo-kernel-mode- | 标题 Debug Windows Drivers Step-By-Step Lab (Echo Kernel Mode)。用 WinDbg 调试 KMDF echo 示例。要求 Windows 11 双机、WDK。不是 CTF |
+| .../debugger/getting-started-with-windbg-kernel-mode | 404 |
+| .../debugger/setting-up-kernel-mode-debugging-in-windbg--kernel-mode- | 404 |
+
+Windows Internals 第 7 版仍只有书目页，不写章节内容。
+
+---
+
 ## 9. 验证方法复现
 
 

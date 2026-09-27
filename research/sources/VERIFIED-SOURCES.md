@@ -53,6 +53,10 @@
 | 46 | res-kernel-mm-api | https://docs.kernel.org/core-api/mm-api.html | 7.3.0-rc4；Slab Cache；kmalloc 小于一页 | ✅ |
 | 47 | res-kernel-kgdb | https://docs.kernel.org/process/debugging/kgdb.html | 7.3.0-rc4；kgdb/kdb；kgdboc、nokaslr | ✅ |
 | 48 | res-kernel-parameters | https://docs.kernel.org/admin-guide/kernel-parameters.html | nokaslr；pti= [X86-64]；nosmep/nosmap 标 PPC | ✅ |
+| 49 | res-windows-wdm-intro | https://learn.microsoft.com/en-us/windows-hardware/drivers/kernel/introduction-to-wdm | WDM 不再是推荐模型；建议 KMDF | ✅ |
+| 50 | res-windows-ioctl-intro | https://learn.microsoft.com/en-us/windows-hardware/drivers/kernel/introduction-to-i-o-control-codes | IOCTL 经 IRP；DeviceIoControl | ✅ |
+| 51 | res-windows-windbg-install | https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/ | WinDbg；用户态与内核态；x64 和 ARM64 | ✅ |
+| 52 | res-windows-echo-kmdf-lab | https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/debug-universal-drivers---step-by-step-lab--echo-kernel-mode- | WinDbg 调试 KMDF Echo；不是 CTF | ✅ |
 
 ## 说明
 
