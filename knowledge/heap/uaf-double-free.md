@@ -28,7 +28,8 @@ planned_challenges:
 # Protostar heap2 已建正式题 ch-nightmare-protostar-heap2，但是堆溢出，挂在 adv-heap-overflow。
 # 旧引用把它放在本 UAF 知识点下，2026-09-27 打开深页后已移走。
 hints: []
-writeups: []
+writeups:
+  - wu-nightmare-plaid19-cpp
 review:
   method: 总结"UAF 三部曲"（dangling→reclaim→hijack）并各举一例
   interval: 首次后 2 周

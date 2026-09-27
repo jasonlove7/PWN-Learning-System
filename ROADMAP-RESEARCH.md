@@ -409,6 +409,23 @@ abi-aa 索引上能看到 PAuth ABI（`pauthabielf64.rst`）的链接，正文�
 
 ---
 
+## 13. Phase 3-D（2026-09-27）
+
+只加了一道打开过深页的题。
+
+| 题 | 页上的事实 | 处理 |
+|----|------------|------|
+| Boston Key Party 2016 Cookbook | 章节名即此。House of Force。页内打印 glibc 2.24。有讲解。 | 正式题 `ch-nightmare-bkp16-cookbook`，挂 `adv-house-of` |
+| House of Orange explanation | 页内是讲解，没有赛事名。写明用于 2.26 之前，示例 map 为 2.23。 | 不建题。版本句写入 `adv-house-of` 的 verified_versions |
+| largebin pt 0 / pt 1 | 上一阶段已确认是讲解 | 仍无正式题 |
+| lore / einherjar | 侧栏只有讲解，没有赛事链接 | 不建题 |
+
+how2heap 的 `house_of_*.c` 继续不进 `challenges/`。
+
+BKP 2016 的 simple calc 是栈题，cookbook 是堆题，id 不同。
+
+---
+
 ## 9. 验证方法复现
 
 

@@ -33,7 +33,8 @@ planned_challenges:
     status: research-needed
     note: 2026-09-27 读取的 Nightmare 侧栏没有 protostar_heap3。不建正式条目。旧索引摘录不可当作该深页已核对。
 hints: []
-writeups: []
+writeups:
+  - wu-nightmare-hitcon14-stkof
 review:
   method: 手推 self-check 通过时各指针的值
   interval: 首次后 2 个月

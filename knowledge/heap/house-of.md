@@ -13,18 +13,19 @@ prerequisites:
 why_learn: |
   不必全会，但族谱要熟：看到题能想起"这类布局对应哪个 house"。每个 house 都是一个时代的 alloc 逻辑产物。
 objectives:
-  - 能列出 ≥6 个 house 技术的一句话原理与适用版本
-  - 能描述 house of spirit / force / einherjar / orange 的核心差异
+  - 能区分 House of Spirit（伪造块再 free，见 Oreo）和 House of Force（改 top size，见 Cookbook）
+  - 能指出 House of Orange 的 Nightmare 页是讲解：它写的是 2.26 之前，示例为 2.23，且没有赛事题
+  - 能拒绝把 how2heap 的 house_of_*.c 当成 CTF 题
 resources:
   - res-how2heap
   - res-ctf-wiki-heap-overview
   - res-nightmare
 challenges:
   - ch-nightmare-hacklu14-oreo
-# hitcon magicheap 在 Nightmare 的 unsorted bin 模块，不是 house 例题。
-# 正式条目 ch-nightmare-hitcon-magicheap 挂在 adv-unsorted-bin-attack。
-hints: []
-writeups: []
+  - ch-nightmare-bkp16-cookbook
+writeups:
+  - wu-nightmare-hacklu14-oreo
+  - wu-nightmare-bkp16-cookbook
 review:
   method: 族谱卡片复习（每个 house 一行）
   interval: 首次后 2 个月
@@ -36,8 +37,12 @@ version_dependent: true
 verified_versions:
   - glibc: "latest"
     notes: how2heap README 将 house_of_lore、house_of_einherjar、house_of_spirit 等标成 latest。house_of_force 的 top size 检查版本本轮没有在 changelog 里看到，不写入。
+  - glibc: "2.24"
+    notes: Nightmare Boston Key Party 2016 Cookbook 页内打印 glibc 2.24，并在泄漏之后使用 House of Force。这是这一道题的库，不是 House of Force 的全部适用区间。
+  - glibc: "2.23"
+    notes: Nightmare House of Orange 讲解页写该布局用于 2.26 之前的 libc，示例 map 是 2.23。该页是讲解，不是 CTF，没有正式题。
   - glibc: "2.31 - 2.33"
-    notes: how2heap README 把 house_of_io.c 标成 2.31 - 2.33。
+    notes: how2heap README 把 house_of_io.c 标成 2.31 - 2.33。示例不是 CTF 题。
 ---
 
 # house of 系列总览

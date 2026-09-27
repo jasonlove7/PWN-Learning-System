@@ -24,7 +24,8 @@ planned_challenges: []
 # 2026-09-27 打开 Nightmare 深页后，它在 unsorted bin 模块，正式条目是
 # ch-nightmare-0ctf16-zerostorage，挂在 adv-unsorted-bin-attack。此处不再引用。
 hints: []
-writeups: []
+writeups:
+  - wu-nightmare-0ctf17-babyheap
 review:
   method: 默写 fastbin dup 的三次 malloc/free 序列
   interval: 首次后 1 个月

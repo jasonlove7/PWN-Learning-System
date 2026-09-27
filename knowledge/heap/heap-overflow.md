@@ -21,7 +21,9 @@ challenges:
   - ch-nightmare-protostar-heap2
   - ch-nightmare-0ctf17-babyheap
 hints: []
-writeups: []
+writeups:
+  - wu-nightmare-protostar-heap2
+  - wu-nightmare-0ctf17-babyheap
 review:
   method: 画 off-by-null 触发 unlink 合并的布局图
   interval: 首次后 2 周

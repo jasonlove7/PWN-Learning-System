@@ -23,7 +23,8 @@ resources:
 challenges:
   - ch-nightmare-swamp19-badfile
 hints: []
-writeups: []
+writeups:
+  - wu-nightmare-swamp19-badfile
 review:
   method: 口述一次"伪造 FILE → 触发"的完整事件链
   interval: 首次后 2 个月

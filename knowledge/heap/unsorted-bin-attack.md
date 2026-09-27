@@ -25,7 +25,9 @@ challenges:
 # 有正式题，故不写 practice_status。版本字段只覆盖 README 里 overlapping_chunks 的 < 2.29，
 # 不覆盖这两道题各自的 glibc（页面没有给出可写入 verified_versions 的版本句）。
 hints: []
-writeups: []
+writeups:
+  - wu-nightmare-hitcon-magicheap
+  - wu-nightmare-0ctf16-zerostorage
 review:
   method: 解释"为什么 unsorted 唯一块的 fd == main_arena+88（概念）"
   interval: 首次后 1 个月

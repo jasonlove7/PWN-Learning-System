@@ -27,7 +27,8 @@ planned_challenges:
     status: planned
     note: how2heap 是已验证的示例仓库（res-how2heap），不是单道题目。不伪造 challenge 条目。见 adv-heap-modern 的同一说明。
 hints: []
-writeups: []
+writeups:
+  - wu-nightmare-plaid19-cpp
 review:
   method: 手算一个 safe-linking 加密/解密例子
   interval: 首次后 1 周
