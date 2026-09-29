@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ChallengeActions } from "@/components/ChallengeActions";
+import { Markdown } from "@/components/Markdown";
 import { getChallengeById, getChallenges, getKnowledgeById, getWriteupById } from "@/lib/content";
 
 export function generateStaticParams() {
@@ -20,8 +21,12 @@ export default async function ChallengeDetail({ params }: { params: Promise<{ id
       <p><a href={c.url} target="_blank" rel="noreferrer">打开题目</a></p>
       <h2>知识点</h2>
       <ul>{c.knowledgePoints.map((k) => <li key={k}><Link href={`/knowledge/${k}`}>{getKnowledgeById(k)?.title ?? k}</Link></li>)}</ul>
+      <h2>前置</h2>
+      <ul>{c.prerequisites.map((p) => <li key={p}><Link href={`/knowledge/${p}`}>{getKnowledgeById(p)?.title ?? p}</Link></li>)}</ul>
+      {c.prerequisites.length === 0 ? <p className="meta">无。</p> : null}
       <h2>为什么选</h2>
       <p>{c.whySelected}</p>
+      {c.body ? <Markdown>{c.body}</Markdown> : null}
       <ChallengeActions challenge={{ ...c, writeups: writeups.map((w) => w.url) }} />
       <h2>外部 writeup</h2>
       <ul>

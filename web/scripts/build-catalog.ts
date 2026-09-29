@@ -114,6 +114,18 @@ function frontmatter(file: string): Record<string, Node> | null {
   return parseYaml(text.slice(text.indexOf("\n") + 1, end));
 }
 
+function bodyText(file: string): string {
+  const text = fs.readFileSync(file, "utf8");
+  const m = /^---\r?\n[\s\S]*?\r?\n---\r?\n?/.exec(text);
+  let body = (m ? text.slice(m[0].length) : text).trim();
+  body = body.replace(/^#\s+.+\r?\n+/, "").trim();
+  return body;
+}
+
+function stripHints(md: string): string {
+  return md.replace(/<details>[\s\S]*?<\/details>/g, "").replace(/\n{3,}/g, "\n\n").trim();
+}
+
 function str(v: Node | undefined): string {
   return typeof v === "string" ? v : v == null ? "" : String(v);
 }
@@ -125,7 +137,32 @@ function list(v: Node | undefined): string[] {
   return v.filter((x): x is string => typeof x === "string");
 }
 
-const knowledge = walk(path.join(repoRoot, "knowledge")).map((file) => {
+const knowledgeFiles = walk(path.join(repoRoot, "knowledge"));
+const challengeFiles = walk(path.join(repoRoot, "challenges"));
+
+const routeByFile = new Map<string, string>();
+for (const file of knowledgeFiles) {
+  const fm = frontmatter(file);
+  const id = fm ? str(fm.id) : "";
+  if (id) routeByFile.set(path.relative(repoRoot, file).replaceAll("\\", "/"), `/knowledge/${id}`);
+}
+for (const file of challengeFiles) {
+  const fm = frontmatter(file);
+  const id = fm ? str(fm.id) : "";
+  if (id) routeByFile.set(path.relative(repoRoot, file).replaceAll("\\", "/"), `/challenges/${id}`);
+}
+
+function rewriteLinks(md: string, file: string): string {
+  const dir = path.relative(repoRoot, path.dirname(file)).replaceAll("\\", "/");
+  return md.replace(/\]\(([^)\s]+?\.md)(#[^)\s]*)?\)/g, (full, p: string) => {
+    if (/^[a-z][a-z0-9+.-]*:/i.test(p)) return full;
+    const abs = decodeURIComponent(path.posix.normalize(path.posix.join(dir, p)));
+    const route = routeByFile.get(abs);
+    return route ? `](${route})` : full;
+  });
+}
+
+const knowledge = knowledgeFiles.map((file) => {
   const fm = frontmatter(file);
   if (!fm) throw new Error(`no frontmatter ${file}`);
   const rel = path.relative(repoRoot, file).replaceAll("\\", "/");
@@ -146,10 +183,11 @@ const knowledge = walk(path.join(repoRoot, "knowledge")).map((file) => {
     practiceStatus: str(fm.practice_status),
     verificationStatus: str(fm.verification_status),
     file: rel,
+    body: rewriteLinks(bodyText(file), file),
   };
 });
 
-const challenges = walk(path.join(repoRoot, "challenges")).map((file) => {
+const challenges = challengeFiles.map((file) => {
   const text = fs.readFileSync(file, "utf8");
   const fm = frontmatter(file);
   if (!fm) throw new Error(`no frontmatter ${file}`);
@@ -174,6 +212,7 @@ const challenges = walk(path.join(repoRoot, "challenges")).map((file) => {
     writeups: list(writeup.external),
     file: path.relative(repoRoot, file).replaceAll("\\", "/"),
     hints,
+    body: rewriteLinks(stripHints(bodyText(file)), file),
   };
 });
 

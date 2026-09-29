@@ -15,6 +15,7 @@ export type Knowledge = {
   practiceStatus: string;
   verificationStatus: string;
   file: string;
+  body: string;
 };
 
 export type Hint = { title: string; body: string };
@@ -35,6 +36,7 @@ export type Challenge = {
   writeups: string[];
   file: string;
   hints: Hint[];
+  body: string;
 };
 
 export type Writeup = {

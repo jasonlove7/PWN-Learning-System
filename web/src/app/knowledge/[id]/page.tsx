@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Markdown } from "@/components/Markdown";
 import { StatusPicker } from "@/lib/progress";
 import { getChallengeById, getKnowledge, getKnowledgeById, getResourceById, getWriteupById, stars, trackLabel } from "@/lib/content";
 
@@ -21,6 +22,7 @@ export default async function KnowledgeDetail({ params }: { params: Promise<{ id
       <StatusPicker id={k.id} />
       <h2>概述</h2>
       <p>{k.description}</p>
+      {k.body ? <Markdown>{k.body}</Markdown> : null}
       <h2>前置</h2>
       <ul>{k.prerequisites.map((p) => <li key={p}><Link href={`/knowledge/${p}`}>{getKnowledgeById(p)?.title ?? p}</Link></li>)}</ul>
       {k.prerequisites.length === 0 ? <p className="meta">无。</p> : null}
@@ -48,7 +50,7 @@ export default async function KnowledgeDetail({ params }: { params: Promise<{ id
           return <li key={wid}>{w ? <a href={w.url} target="_blank" rel="noreferrer">{w.title}</a> : wid}</li>;
         })}
       </ul>
-      <p className="meta">正文在仓库文件 {k.file}。本页只展示结构化字段。</p>
+      <p className="meta">源文件：{k.file}</p>
     </article>
   );
 }
