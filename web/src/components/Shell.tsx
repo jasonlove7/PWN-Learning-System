@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import type { Catalog } from "@/lib/types";
 
@@ -19,6 +19,7 @@ const NAV = [
 
 export function Shell({ catalog, children }: { catalog: Catalog; children: React.ReactNode }) {
   const path = usePathname();
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [searchOn, setSearchOn] = useState(false);
@@ -63,7 +64,7 @@ export function Shell({ catalog, children }: { catalog: Catalog; children: React
       const hit = hits[cursor];
       setSearchOn(false);
       if (hit.href.startsWith("http")) window.open(hit.href, "_blank", "noopener,noreferrer");
-      else window.location.href = hit.href;
+      else router.push(hit.href);
     }
   }
 
