@@ -72,7 +72,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
   color: var(--muted);
   cursor: pointer;
 }
-.content { max-width: 1100px; margin: 0 auto; padding: 28px 28px 64px; }
+.content { max-width: 1100px; margin: 0 auto; padding: 28px 28px 64px; overflow-wrap: anywhere; }
 h1 { font-size: 28px; font-weight: 650; letter-spacing: -0.03em; margin: 0 0 8px; }
 h2 { font-size: 18px; margin: 28px 0 10px; }
 .lead { color: var(--muted); margin: 0 0 20px; }
@@ -134,7 +134,7 @@ h2 { font-size: 18px; margin: 28px 0 10px; }
 .bar { height: 8px; background: #e7eef6; border-radius: 99px; overflow: hidden; }
 .bar > span { display: block; height: 100%; background: var(--primary); }
 
-.md { font-size: 14.5px; overflow-wrap: anywhere; }
+.md { font-size: 14.5px; }
 .md h1, .md h2, .md h3 { letter-spacing: -0.02em; }
 .md h2 { font-size: 17px; margin: 22px 0 8px; }
 .md h3 { font-size: 15px; margin: 18px 0 6px; }
