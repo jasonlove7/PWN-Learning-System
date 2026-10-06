@@ -11,16 +11,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 
-KNOWLEDGE_REQUIRED = [
-    "id",
-    "title",
-    "description",
-    "importance",
-    "difficulty",
-    "track",
-    "type",
-    "verification_status",
-    "last_verified",
+KNOWLEDGE_REQUIRED = ["title", "description", "module", "order", "difficulty", "objectives"]
+MODULES = [
+    "assembly", "elf", "gdb", "stack", "shellcode", "ret2syscall",
+    "ret2libc", "rop", "format-string", "got-plt", "mitigations", "heap",
 ]
 CHALLENGE_REQUIRED = [
     "id",
@@ -319,156 +313,44 @@ def main() -> int:
     warnings: list[str] = []
 
     knowledge = load_objects(ROOT / "knowledge", "knowledge", errors)
-    challenges = load_objects(ROOT / "challenges", "challenge", errors)
-    writeups = load_objects(ROOT / "writeups", "writeup", errors)
-    resources = load_resource_ids(errors, warnings)
+    labs = ROOT / "labs"
 
-    def index(rows, label):
-        out = {}
-        for row in rows:
-            rid = row.get("id")
-            if not isinstance(rid, str) or not rid:
-                errors.append(f"{row['__path__']}: missing id")
-                continue
-            if rid in out:
-                errors.append(f"duplicate {label} id {rid} ({row['__path__']} and {out[rid]['__path__']})")
-            out[rid] = row
-        return out
-
-    k_ids = index(knowledge, "knowledge")
-    c_ids = index(challenges, "challenge")
-    w_ids = index(writeups, "writeup")
-
+    slugs = {}
     for row in knowledge:
         path = row["__path__"]
         for field in KNOWLEDGE_REQUIRED:
             if field not in row or row[field] in (None, ""):
                 errors.append(f"{path}: missing {field}")
-        if row.get("track") not in TRACKS:
-            errors.append(f"{path}: bad track {row.get('track')!r}")
-        if row.get("type") not in KP_TYPES:
-            errors.append(f"{path}: bad type {row.get('type')!r}")
-        if row.get("verification_status") not in KP_VERIFY:
-            errors.append(f"{path}: bad verification_status {row.get('verification_status')!r}")
-        for name in ("importance", "difficulty"):
-            val = row.get(name)
-            if not isinstance(val, int) or not 1 <= val <= 5:
-                errors.append(f"{path}: {name} must be int 1-5, got {val!r}")
-        for ref in as_id_list(row.get("prerequisites"), path, "prerequisites", errors):
-            if ref not in k_ids:
-                errors.append(f"{path}: unknown prerequisite {ref}")
-        for ref in as_id_list(row.get("resources"), path, "resources", errors):
-            if ref not in resources:
-                errors.append(f"{path}: unknown resource {ref}")
-        for ref in as_id_list(row.get("challenges"), path, "challenges", errors):
-            if ref not in c_ids:
-                errors.append(f"{path}: unknown challenge {ref} (use planned_challenges if not yet a file)")
-        for ref in as_id_list(row.get("writeups"), path, "writeups", errors):
-            if ref not in w_ids:
-                errors.append(f"{path}: unknown writeup {ref}")
-        planned = row.get("planned_challenges") or []
-        if planned and not isinstance(planned, list):
-            errors.append(f"{path}: planned_challenges is not a list")
-            planned = []
-        for item in planned:
-            if not isinstance(item, dict) or "id" not in item:
-                errors.append(f"{path}: planned challenge missing id")
-                continue
-            if item["id"] in c_ids:
-                errors.append(f"{path}: {item['id']} is a real challenge, not planned")
-            status = item.get("status")
-            if status not in PLANNED_STATUS:
-                errors.append(f"{path}: planned {item['id']} has bad status {status!r}")
-        if row.get("source_type") == "ai_generated":
-            if row.get("verified") is True and not row.get("verification_method"):
-                errors.append(f"{path}: ai_generated verified without verification_method")
-            if "AI Generated" not in (ROOT / path).read_text(encoding="utf-8"):
-                warnings.append(f"{path}: ai_generated file does not contain 'AI Generated'")
-        vd = row.get("version_dependent", False)
-        if vd not in (True, False):
-            errors.append(f"{path}: version_dependent must be boolean")
-        versions = row.get("verified_versions")
-        if versions is not None and not isinstance(versions, list):
-            errors.append(f"{path}: verified_versions is not a list")
-            versions = []
-        if vd is True and not versions:
-            warnings.append(f"{path}: version_dependent true but verified_versions empty")
-        for item in versions or []:
-            if not isinstance(item, dict) or "glibc" not in item or "notes" not in item:
-                errors.append(f"{path}: verified_versions entry needs glibc and notes")
-        ch = row.get("challenges")
-        empty_ch = ch in (None, [], "")
-        if row.get("practice_status") == "no_verified_challenge" and not empty_ch:
-            errors.append(f"{path}: practice_status no_verified_challenge but challenges is non-empty")
-        if empty_ch and row.get("track") == "mainline" and str(row.get("id", "")).startswith("adv-"):
-            if row.get("practice_status") != "no_verified_challenge" and row.get("version_dependent") is not False:
-                warnings.append(f"{path}: advanced knowledge has no challenge and no practice_status")
+        module = row.get("module")
+        if module not in MODULES:
+            errors.append(f"{path}: unknown module {module!r}")
+        order = row.get("order")
+        if not isinstance(order, int) or order < 0:
+            errors.append(f"{path}: order must be int >= 0, got {order!r}")
+        difficulty = row.get("difficulty")
+        if not isinstance(difficulty, int) or not 1 <= difficulty <= 5:
+            errors.append(f"{path}: difficulty must be int 1-5, got {difficulty!r}")
+        objectives = row.get("objectives")
+        if not isinstance(objectives, list) or not objectives:
+            errors.append(f"{path}: objectives must be a non-empty list")
+        prerequisites = row.get("prerequisites")
+        if prerequisites is not None and not isinstance(prerequisites, list):
+            errors.append(f"{path}: prerequisites is not a list")
+        slug = f"{module}/{Path(path).stem}"
+        if slug in slugs:
+            errors.append(f"duplicate slug {slug} ({path} and {slugs[slug]})")
+        slugs[slug] = path
+        lab = row.get("lab")
+        if isinstance(lab, str) and lab and not (ROOT / lab).is_dir():
+            errors.append(f"{path}: lab directory does not exist: {lab}")
 
-    for row in challenges:
-        path = row["__path__"]
-        for field in CHALLENGE_REQUIRED:
-            if field not in row or row[field] in (None, ""):
-                errors.append(f"{path}: missing {field}")
-        if row.get("category") not in CH_CATEGORY:
-            errors.append(f"{path}: bad category {row.get('category')!r}")
-        if row.get("difficulty") not in CH_DIFFICULTY:
-            errors.append(f"{path}: bad difficulty {row.get('difficulty')!r}")
-        if row.get("verification_status") not in CH_VERIFY:
-            errors.append(f"{path}: bad verification_status {row.get('verification_status')!r}")
-        if row.get("reproducibility") not in CH_REPRO:
-            errors.append(f"{path}: bad reproducibility {row.get('reproducibility')!r}")
-        folder = Path(path).parts[1] if len(Path(path).parts) > 1 else ""
-        if folder and row.get("category") and folder != row.get("category"):
-            errors.append(f"{path}: folder {folder} != category {row.get('category')}")
-        for ref in as_id_list(row.get("knowledge_points"), path, "knowledge_points", errors):
-            if ref not in k_ids:
-                errors.append(f"{path}: unknown knowledge point {ref}")
-        for ref in as_id_list(row.get("prerequisites"), path, "prerequisites", errors):
-            if ref not in k_ids and ref not in c_ids:
-                errors.append(f"{path}: unknown prerequisite {ref}")
-        writeup = row.get("writeup")
-        if writeup is None:
-            warnings.append(f"{path}: no writeup block")
-        elif not isinstance(writeup, dict):
-            errors.append(f"{path}: writeup is not a map")
-        else:
-            for ref in as_id_list(writeup.get("external"), path, "writeup.external", errors):
-                if ref not in w_ids:
-                    errors.append(f"{path}: unknown external writeup {ref}")
-            ai = writeup.get("ai_summary")
-            if isinstance(ai, str) and ai not in {"", '""'}:
-                if ai not in w_ids:
-                    errors.append(f"{path}: unknown ai_summary {ai}")
-                elif w_ids[ai].get("source_type") != "ai_generated":
-                    errors.append(f"{path}: {ai} is not source_type ai_generated")
+    for module in MODULES:
+        if f"{module}/index" not in slugs:
+            errors.append(f"module {module} has no index.md")
 
-    for row in writeups:
-        path = row["__path__"]
-        for field in WRITEUP_REQUIRED:
-            if field not in row or row[field] in (None, ""):
-                errors.append(f"{path}: missing {field}")
-        if row.get("type") not in WU_TYPES:
-            errors.append(f"{path}: bad type {row.get('type')!r}")
-        challenge = row.get("challenge")
-        if isinstance(challenge, str) and challenge not in c_ids:
-            errors.append(f"{path}: unknown challenge {challenge}")
-        if row.get("type") == "ai_summary" or row.get("source_type") == "ai_generated":
-            if row.get("source_type") != "ai_generated":
-                errors.append(f"{path}: ai summary missing source_type ai_generated")
-            if row.get("verified") is True and not row.get("verification_method"):
-                errors.append(f"{path}: ai summary verified without verification_method")
-            if row.get("verified") is True:
-                warnings.append(f"{path}: ai_generated is verified true; marker must stay")
-        if not isinstance(row.get("verified"), bool):
-            errors.append(f"{path}: verified must be boolean")
-
-    print(f"knowledge: {len(k_ids)}")
-    print(f"challenges: {len(c_ids)}")
-    print(f"writeups: {len(w_ids)}")
-    print(f"resources: {len(resources)}")
-    print(f"warnings: {len(warnings)}")
-    for msg in warnings:
-        print(f"  warning: {msg}")
+    print(f"articles: {len(knowledge)}")
+    print(f"modules: {len(MODULES)}")
+    print(f"labs: {sum(1 for p in labs.rglob('*.c')) if labs.exists() else 0}")
     print(f"errors: {len(errors)}")
     for msg in errors:
         print(f"  error: {msg}")

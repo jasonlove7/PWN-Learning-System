@@ -6,20 +6,18 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(here, "..", "..");
 const outFile = path.join(here, "..", "src", "content", "catalog.json");
 
+type Node = Record<string, unknown> | unknown[] | string | number | boolean | null;
+
 function walk(dir: string): string[] {
   const out: string[] = [];
   if (!fs.existsSync(dir)) return out;
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
     const full = path.join(dir, entry.name);
     if (entry.isDirectory()) out.push(...walk(full));
-    else if (entry.name.endsWith(".md") && entry.name !== "README.md" && entry.name !== "_template.md") {
-      out.push(full);
-    }
+    else if (entry.name.endsWith(".md")) out.push(full);
   }
   return out;
 }
-
-type Node = Record<string, unknown> | unknown[] | string | number | boolean | null;
 
 function parseScalar(raw: string): Node {
   const s = raw.trim();
@@ -106,24 +104,14 @@ function parseYaml(text: string): Record<string, Node> {
   return root;
 }
 
-function frontmatter(file: string): Record<string, Node> | null {
+function splitFrontmatter(file: string): { fm: Record<string, Node>; body: string } {
   const text = fs.readFileSync(file, "utf8");
-  if (!text.startsWith("---\n") && !text.startsWith("---\r\n")) return null;
+  if (!text.startsWith("---\n") && !text.startsWith("---\r\n")) throw new Error(`no frontmatter ${file}`);
   const end = text.indexOf("\n---", 3);
-  if (end < 0) return null;
-  return parseYaml(text.slice(text.indexOf("\n") + 1, end));
-}
-
-function bodyText(file: string): string {
-  const text = fs.readFileSync(file, "utf8");
-  const m = /^---\r?\n[\s\S]*?\r?\n---\r?\n?/.exec(text);
-  let body = (m ? text.slice(m[0].length) : text).trim();
-  body = body.replace(/^#\s+.+\r?\n+/, "").trim();
-  return body;
-}
-
-function stripHints(md: string): string {
-  return md.replace(/<details>[\s\S]*?<\/details>/g, "").replace(/\n{3,}/g, "\n\n").trim();
+  if (end < 0) throw new Error(`unterminated frontmatter ${file}`);
+  const fm = parseYaml(text.slice(text.indexOf("\n") + 1, end));
+  const body = text.slice(end + 4).replace(/^\r?\n/, "").replace(/^#\s+.+\r?\n+/, "").trim();
+  return { fm, body };
 }
 
 function str(v: Node | undefined): string {
@@ -137,165 +125,68 @@ function list(v: Node | undefined): string[] {
   return v.filter((x): x is string => typeof x === "string");
 }
 
-const knowledgeFiles = walk(path.join(repoRoot, "knowledge"));
-const challengeFiles = walk(path.join(repoRoot, "challenges"));
+const MODULES = [
+  ["assembly", "汇编"],
+  ["elf", "ELF"],
+  ["gdb", "GDB"],
+  ["stack", "栈溢出"],
+  ["shellcode", "Shellcode"],
+  ["ret2syscall", "ret2syscall"],
+  ["ret2libc", "ret2libc"],
+  ["rop", "ROP"],
+  ["format-string", "格式化字符串"],
+  ["got-plt", "GOT / PLT"],
+  ["mitigations", "保护机制"],
+  ["heap", "堆"],
+] as const;
 
-const routeByFile = new Map<string, string>();
-for (const file of knowledgeFiles) {
-  const fm = frontmatter(file);
-  const id = fm ? str(fm.id) : "";
-  if (id) routeByFile.set(path.relative(repoRoot, file).replaceAll("\\", "/"), `/knowledge/${id}`);
-}
-for (const file of challengeFiles) {
-  const fm = frontmatter(file);
-  const id = fm ? str(fm.id) : "";
-  if (id) routeByFile.set(path.relative(repoRoot, file).replaceAll("\\", "/"), `/challenges/${id}`);
-}
+const files = walk(path.join(repoRoot, "knowledge"));
 
-function rewriteLinks(md: string, file: string): string {
-  const dir = path.relative(repoRoot, path.dirname(file)).replaceAll("\\", "/");
-  return md.replace(/\]\(([^)\s]+?\.md)(#[^)\s]*)?\)/g, (full, p: string) => {
-    if (/^[a-z][a-z0-9+.-]*:/i.test(p)) return full;
-    const abs = decodeURIComponent(path.posix.normalize(path.posix.join(dir, p)));
-    const route = routeByFile.get(abs);
-    return route ? `](${route})` : full;
-  });
-}
+type Article = {
+  slug: string;
+  module: string;
+  order: number;
+  title: string;
+  description: string;
+  difficulty: number;
+  prerequisites: string[];
+  objectives: string[];
+  lab: string;
+  file: string;
+  body: string;
+};
 
-const knowledge = knowledgeFiles.map((file) => {
-  const fm = frontmatter(file);
-  if (!fm) throw new Error(`no frontmatter ${file}`);
+const articles: Article[] = files.map((file) => {
+  const { fm, body } = splitFrontmatter(file);
   const rel = path.relative(repoRoot, file).replaceAll("\\", "/");
+  const slug = `${str(fm.module)}/${path.basename(file, ".md")}`;
   return {
-    id: str(fm.id),
+    slug,
+    module: str(fm.module),
+    order: num(fm.order),
     title: str(fm.title),
     description: str(fm.description),
-    importance: num(fm.importance),
     difficulty: num(fm.difficulty),
-    track: str(fm.track),
-    type: str(fm.type),
-    depth: str(fm.depth) || "standard",
     prerequisites: list(fm.prerequisites),
     objectives: list(fm.objectives),
-    resources: list(fm.resources),
-    challenges: list(fm.challenges),
-    writeups: list(fm.writeups),
-    practiceStatus: str(fm.practice_status),
-    verificationStatus: str(fm.verification_status),
+    lab: str(fm.lab),
     file: rel,
-    body: rewriteLinks(bodyText(file), file),
+    body,
   };
 });
 
-const challenges = challengeFiles.map((file) => {
-  const text = fs.readFileSync(file, "utf8");
-  const fm = frontmatter(file);
-  if (!fm) throw new Error(`no frontmatter ${file}`);
-  const hints = [...text.matchAll(/<summary>(.*?)<\/summary>\s*([\s\S]*?)<\/details>/g)].map((m) => ({
-    title: m[1].replace(/<[^>]+>/g, "").trim(),
-    body: m[2].replace(/<[^>]+>/g, "").trim(),
-  }));
-  const writeup = (fm.writeup ?? {}) as Record<string, Node>;
-  return {
-    id: str(fm.id),
-    name: str(fm.name),
-    platform: str(fm.platform),
-    event: str(fm.event),
-    year: str(fm.year),
-    category: str(fm.category),
-    difficulty: str(fm.difficulty),
-    url: str(fm.url),
-    knowledgePoints: list(fm.knowledge_points),
-    prerequisites: list(fm.prerequisites),
-    whySelected: str(fm.why_selected),
-    verificationStatus: str(fm.verification_status),
-    writeups: list(writeup.external),
-    file: path.relative(repoRoot, file).replaceAll("\\", "/"),
-    hints,
-    body: rewriteLinks(stripHints(bodyText(file)), file),
-  };
-});
-
-const writeups = walk(path.join(repoRoot, "writeups")).map((file) => {
-  const fm = frontmatter(file);
-  if (!fm) throw new Error(`no frontmatter ${file}`);
-  return {
-    id: str(fm.id),
-    type: str(fm.type),
-    title: str(fm.title),
-    challenge: str(fm.challenge),
-    author: str(fm.author),
-    url: str(fm.url),
-    summary: str(fm.summary),
-    verified: fm.verified === true,
-    correspondence: str(fm.correspondence),
-    file: path.relative(repoRoot, file).replaceAll("\\", "/"),
-  };
-});
-
-const resources: Record<string, Node>[] = [];
-for (const file of fs.readdirSync(path.join(repoRoot, "resources")).filter((f) => f.endsWith(".md") && f !== "README.md")) {
-  const text = fs.readFileSync(path.join(repoRoot, "resources", file), "utf8");
-  const re = /```yaml\n([\s\S]*?)```/g;
-  let m: RegExpExecArray | null;
-  while ((m = re.exec(text))) {
-    const parts: string[] = [];
-    let cur: string[] = [];
-    for (const line of m[1].split(/\r?\n/)) {
-      if (line.trim() === "---") {
-        if (cur.some((l) => l.trim() && !l.trim().startsWith("#"))) parts.push(cur.join("\n"));
-        cur = [];
-      } else cur.push(line);
-    }
-    if (cur.some((l) => l.trim() && !l.trim().startsWith("#"))) parts.push(cur.join("\n"));
-    for (const part of parts) {
-      const cleaned = part
-        .split(/\r?\n/)
-        .filter((l) => l.trim() && !l.trim().startsWith("#"))
-        .join("\n");
-      if (!cleaned.includes("id:") || !cleaned.includes("url:")) continue;
-      const fm = parseYaml(cleaned);
-      if (!str(fm.url)) continue;
-      resources.push({
-        id: str(fm.id),
-        title: str(fm.title),
-        author: str(fm.author),
-        url: str(fm.url),
-        sourceType: str(fm.source_type),
-        language: str(fm.language),
-        tier: str(fm.tier),
-        verified: fm.verified === true,
-        summary: str(fm.summary),
-        relatedKnowledge: list(fm.related_knowledge),
-        file: `resources/${file}`,
-      });
-    }
-  }
+const missing = new Set<string>();
+for (const [id] of MODULES) {
+  if (!articles.some((a) => a.module === id && a.order === 0)) missing.add(id);
 }
-const resourceById = new Map<string, (typeof resources)[number]>();
-for (const r of resources) if (!resourceById.has(str(r.id)) || str(r.url)) resourceById.set(str(r.id), r);
-
-const specs = [
-  ["linux-kernel", "Linux Kernel", "内核文档入口。没有已验证的内核题。"],
-  ["windows-kernel", "Windows Kernel", "驱动、IOCTL 与 WinDbg 文档。没有已验证的内核题。"],
-  ["arm-aarch64", "ARM / AArch64", "ARM32 有入门材料。AArch64 只有调用约定，利用部分仍在研究。"],
-  ["android", "Android", "架构、APK、沙箱、NDK、adb。没有已验证的题。"],
-  ["iot", "IoT", "骨架。没有已验证的专项题。"],
-  ["browser", "Browser", "研究不足。没有已验证的题。"],
-  ["sandbox", "Sandbox", "入口级资料。没有已验证的题。"],
-  ["hypervisor", "Hypervisor", "研究不足。没有已验证的题。"],
-].map(([slug, title, note]) => ({ slug, title, note }));
+if (missing.size) throw new Error(`modules without index.md: ${[...missing].join(", ")}`);
 
 const catalog = {
-  generatedFrom: "repository markdown",
-  knowledge,
-  challenges,
-  writeups,
-  resources: [...resourceById.values()],
-  specializations: specs,
+  generatedFrom: "knowledge/",
+  modules: MODULES.map(([id, title]) => ({ id, title })),
+  articles,
 };
+
 fs.mkdirSync(path.dirname(outFile), { recursive: true });
 fs.writeFileSync(outFile, JSON.stringify(catalog));
-console.log(
-  `knowledge ${knowledge.length} challenges ${challenges.length} writeups ${writeups.length} resources ${resourceById.size}`,
-);
+console.log(`modules ${MODULES.length} articles ${articles.length}`);

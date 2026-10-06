@@ -26,7 +26,22 @@ Thumbs.db
 notebook/personal/
 *.local.md
 
-# frontend
+# lab binaries
+labs/**/call
+labs/**/branch
+labs/**/loop
+labs/**/frame
+labs/**/overflow
+labs/**/args
+labs/**/fmt
+labs/**/hello
+labs/**/hello-nopie
+labs/**/tiny
+labs/**/data
+labs/**/blocked
+labs/**/vuln
+labs/**/*.o
+
 web/node_modules/
 web/.next/
 web/out/
